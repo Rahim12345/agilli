@@ -46,4 +46,16 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
         ->name('back.profile');
 
     Route::resource('option', OptionController::class);
+
+    Route::get('home-banner',[OptionController::class,'homeBanner'])
+        ->name('home.banner');
+
+    Route::post('home-banner',[OptionController::class,'homeBannerPost'])
+        ->name('home.banner.post');
+
+    Route::get('strateji',[OptionController::class,'strateji'])
+        ->name('home.strateji');
+
+    Route::post('strateji',[OptionController::class,'stratejiPost'])
+        ->name('home.strateji.post');
 });

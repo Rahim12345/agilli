@@ -131,51 +131,27 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html" >
+                    <a class="nav-link" href="{{ route('option.index') }}" >
                   <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><circle cx="12" cy="12" r="3" /></svg>
                   </span>
-                        <span class="nav-link-title">
-                    Home
-                  </span>
+                    <span class="nav-link-title" style="{{ request()->segment(2) == 'option' ? 'color: #206bc4;' : '' }}">
+                    Option
+                    </span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle
                     @if(in_array(request()->segment(2),[
-                        'magaza',
-                        'vezife',
-                        'hvezife',
-                        'seher',
-                        'rayon',
-                        'klinika',
-                        'hekim',
-                        'isci',
-                        'partnyor',
-                        'istehsalci',
-                        'kateqoriya',
-                        'model',
-                        'vahid',
-                        'operation',
+                        'home-banner',
+                        'strateji',
                     ]))
                         show
                     @endif
                     " href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="
-@if(in_array(request()->segment(2),[
-                        'magaza',
-                        'vezife',
-                        'hvezife',
-                        'seher',
-                        'rayon',
-                        'klinika',
-                        'hekim',
-                        'isci',
-                        'partnyor',
-                        'istehsalci',
-                        'kateqoriya',
-                        'model',
-                        'vahid',
-                        'operation',
+                    @if(in_array(request()->segment(2),[
+                        'home-banner',
+                        'strateji',
                     ]))
                         true
                     @else
@@ -183,56 +159,69 @@
                     @endif
                     " >
                   <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><circle cx="12" cy="12" r="3" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-windows" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                       <path d="M17.8 20l-12 -1.5c-1 -.1 -1.8 -.9 -1.8 -1.9v-9.2c0 -1 .8 -1.8 1.8 -1.9l12 -1.5c1.2 -.1 2.2 .8 2.2 1.9v12.1c0 1.2 -1.1 2.1 -2.2 1.9z"></path>
+                       <line x1="12" y1="5" x2="12" y2="19"></line>
+                       <line x1="4" y1="12" x2="20" y2="12"></line>
+                    </svg>
                   </span>
                         <span class="nav-link-title" style="
                         @if(in_array(request()->segment(2),[
-                            'magaza',
-                            'vezife',
-                            'hvezife',
-                            'seher',
-                            'rayon',
-                            'klinika',
-                            'hekim',
-                            'isci',
-                            'partnyor',
-                            'istehsalci',
-                            'kateqoriya',
-                            'model',
-                            'vahid',
-                            'operation',
+                            'home-banner',
+                            'strateji',
                         ]))
                             color: #206bc4;
                         @endif
                         ">
-                        Ayarlar
+                        Menus
                       </span>
                     </a>
                     <div class="dropdown-menu
                     @if(in_array(request()->segment(2),[
-                        'magaza',
-                        'vezife',
-                        'hvezife',
-                        'seher',
-                        'rayon',
-                        'klinika',
-                        'hekim',
-                        'isci',
-                        'partnyor',
-                        'istehsalci',
-                        'kateqoriya',
-                        'model',
-                        'vahid',
-                        'operation',
+                        'home-banner',
+                        'strateji',
                     ]))
                         show
                     @endif
 
                     ">
-                        <div class="dropdown-menu-columns">
-                            <div class="dropdown-menu-column">
+                        <div class="dropend">
+                            <a class="dropdown-item dropdown-toggle
+                            @if(in_array(request()->segment(2),[
+                                                    'home-banner',
+                                                    'strateji',
+                                                ]))
+                            active show
+                            @endif
 
+                            " href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="
+                            @if(in_array(request()->segment(2),[
+                                                    'home-banner',
+                                                    'strateji',
+                                                ]))
+                                true
+                            @else
+                                false
+                            @endif
 
+                            ">
+                                Home
+                            </a>
+                            <div class="dropdown-menu
+                            @if(in_array(request()->segment(2),[
+                                                    'home-banner',
+                                                    'strateji',
+                                                ]))
+                                show
+                            @endif
+                            ">
+                                <a href="{{ route('home.banner') }}" class="dropdown-item {{ request()->segment(2) == 'home-banner' ? 'active' : '' }}">
+                                    WATCH SHOWREEL
+                                </a>
+                                <a href="{{ route('home.strateji') }}" class="dropdown-item {{ request()->segment(2) == 'strateji' ? 'active' : '' }}">
+                                    Startegiya Kreativ Digital
+                                </a>
                             </div>
                         </div>
                     </div>

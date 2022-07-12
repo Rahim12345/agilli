@@ -6,9 +6,12 @@ use App\Helpers\Options;
 use App\Models\Option;
 use App\Http\Requests\StoreOptionRequest;
 use App\Http\Requests\UpdateOptionRequest;
+use App\Traits\FileUploader;
+use Illuminate\Http\Request;
 
 class OptionController extends Controller
 {
+    use FileUploader;
     /**
      * Display a listing of the resource.
      *
@@ -16,14 +19,11 @@ class OptionController extends Controller
      */
     public function index()
     {
-        return view('back.layout.master',[
-            'facebook'=>Options::getOption('facebook'),
-            'twitter'=>Options::getOption('twitter'),
-            'instagram'=>Options::getOption('instagram'),
-            'youtube'=>Options::getOption('youtube'),
+        return view('back.pages.options',[
+            'unvan_az'=>Options::getOption('unvan_az'),
+            'unvan_en'=>Options::getOption('unvan_en'),
             'email'=>Options::getOption('email'),
             'tel'=>Options::getOption('tel'),
-
         ]);
     }
 
@@ -45,7 +45,7 @@ class OptionController extends Controller
      */
     public function store(StoreOptionRequest $request)
     {
-        $check_add = Options::getOption('facebook') == '' ? true : false;
+        $check_add = Options::getOption('unvan_az') == '' ? true : false;
         foreach ($request->keys() as $key)
         {
             if ($key != '_token')
@@ -114,5 +114,137 @@ class OptionController extends Controller
     public function destroy(Option $option)
     {
         //
+    }
+
+    public function homeBanner()
+    {
+        return view('back.pages.home.home-banner',[
+            'home_banner_src'=>Options::getOption('home_banner_src'),
+            'home_banner_text_az'=>Options::getOption('home_banner_text_az'),
+            'home_banner_text_en'=>Options::getOption('home_banner_text_en'),
+            'home_banner_button_text_az'=>Options::getOption('home_banner_button_text_az'),
+            'home_banner_button_text_en'=>Options::getOption('home_banner_button_text_en'),
+            'home_banner_link'=>Options::getOption('home_banner_link'),
+        ]);
+    }
+
+    public function homeBannerPost(Request $request)
+    {
+        $this->validate($request,[
+            'home_banner_src'=>'nullable|image',
+            'home_banner_text_az'=>'nullable|max:1000',
+            'home_banner_text_en'=>'nullable|max:1000',
+            'home_banner_button_text_az'=>'nullable|max:1000',
+            'home_banner_button_text_en'=>'nullable|max:1000',
+            'home_banner_link'=>'nullable|max:1000',
+        ],[],[
+            'home_banner_src'=>'Banner',
+            'home_banner_text_az'=>'Text(AZ)',
+            'home_banner_text_en'=>'Text(EN)',
+            'home_banner_button_text_az'=>'Button(AZ)',
+            'home_banner_button_text_en'=>'Button(EN)',
+            'home_banner_link'=>'Link',
+        ]);
+
+
+
+        foreach ($request->keys() as $key)
+        {
+            if ($key != '_token')
+            {
+                if ($key == 'home_banner_src')
+                {
+                    $src   = $this->fileUpdate(Options::getOption('home_banner_src'), $request->hasFile('home_banner_src'), $request->home_banner_src, 'files/home-banner/');
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $src
+                        ]
+                    );
+                }
+                else
+                {
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $request->post($key)
+                        ]
+                    );
+                }
+            }
+        }
+        toastr()->success('Data uğurla əlavə edildi');
+        return redirect()->back();
+    }
+
+    public function strateji()
+    {
+        return view('back.pages.home.strateji',[
+            'home_title_1_az'=>Options::getOption('home_title_1_az'),
+            'home_title_1_en'=>Options::getOption('home_title_1_en'),
+
+            'home_title_2_az'=>Options::getOption('home_title_2_az'),
+            'home_title_2_en'=>Options::getOption('home_title_2_en'),
+
+            'home_title_3_az'=>Options::getOption('home_title_3_az'),
+            'home_title_3_en'=>Options::getOption('home_title_3_en'),
+
+            'home_text_1_az'=>Options::getOption('home_text_1_az'),
+            'home_text_1_en'=>Options::getOption('home_text_1_en'),
+
+            'home_text_2_az'=>Options::getOption('home_text_2_az'),
+            'home_text_2_en'=>Options::getOption('home_text_2_en'),
+
+            'home_text_3_az'=>Options::getOption('home_text_3_az'),
+            'home_text_3_en'=>Options::getOption('home_text_3_en'),
+        ]);
+    }
+
+    public function stratejiPost(Request $request)
+    {
+        $this->validate($request,[
+            'home_title_1_az'=>'nullable|max:10000',
+            'home_title_1_en'=>'nullable|max:10000',
+            'home_title_2_az'=>'nullable|max:10000',
+            'home_title_2_en'=>'nullable|max:10000',
+            'home_title_3_az'=>'nullable|max:10000',
+            'home_title_3_en'=>'nullable|max:10000',
+            'home_text_1_az'=>'nullable|max:10000',
+            'home_text_1_en'=>'nullable|max:10000',
+            'home_text_2_az'=>'nullable|max:10000',
+            'home_text_2_en'=>'nullable|max:10000',
+            'home_text_3_az'=>'nullable|max:10000',
+            'home_text_3_en'=>'nullable|max:10000',
+        ],[],[
+            'home_title_1_az'=>'Title 1 (AZ)',
+            'home_title_1_en'=>'Title 1 (EN)',
+            'home_title_2_az'=>'Title 2 (AZ)',
+            'home_title_2_en'=>'Title 2 (EN)',
+            'home_title_3_az'=>'Title 3 (AZ)',
+            'home_title_3_en'=>'Title 3 (EN)',
+            'home_text_1_az'=>'Text 1 (AZ)',
+            'home_text_1_en'=>'Text 1 (EN)',
+            'home_text_2_az'=>'Text 2 (AZ)',
+            'home_text_2_en'=>'Text 2 (EN)',
+            'home_text_3_az'=>'Text 3 (AZ)',
+            'home_text_3_en'=>'Text 3 (EN)',
+        ]);
+
+        foreach ($request->keys() as $key)
+        {
+            if ($key != '_token')
+            {
+                Option::updateOrCreate(
+                    ['key'   => $key],
+                    [
+                        'value' => $request->post($key)
+                    ]
+                );
+            }
+        }
+
+        toastr()->success('Data uğurla əlavə edildi');
+
+        return redirect()->back();
     }
 }
