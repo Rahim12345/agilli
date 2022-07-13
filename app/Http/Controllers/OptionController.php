@@ -306,4 +306,59 @@ class OptionController extends Controller
 
         return redirect()->back();
     }
+
+    public function aboutBanner()
+    {
+        return view('back.pages.about.about-banner',[
+            'about_banner_src'=>Options::getOption('about_banner_src'),
+            'about_banner_button_text_az'=>Options::getOption('about_banner_button_text_az'),
+            'about_banner_button_text_en'=>Options::getOption('about_banner_button_text_en'),
+            'about_banner_link'=>Options::getOption('about_banner_link')
+        ]);
+    }
+
+    public function aboutBannerPost(Request $request)
+    {
+        $this->validate($request,[
+            'about_banner_src'=>'nullable|image',
+            'about_banner_button_text_az'=>'nullable|max:1000',
+            'about_banner_button_text_en'=>'nullable|max:1000',
+            'about_banner_link'=>'nullable|max:1000'
+        ],[],[
+            'about_banner_src'=>'Banner',
+            'about_banner_button_text_az'=>'Button(AZ)',
+            'about_banner_button_text_en'=>'Button(EN)',
+            'about_banner_link'=>'Link',
+        ]);
+
+
+
+        foreach ($request->keys() as $key)
+        {
+            if ($key != '_token')
+            {
+                if ($key == 'home_banner_src')
+                {
+                    $src   = $this->fileUpdate(Options::getOption('home_banner_src'), $request->hasFile('home_banner_src'), $request->home_banner_src, 'files/home-banner/');
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $src
+                        ]
+                    );
+                }
+                else
+                {
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $request->post($key)
+                        ]
+                    );
+                }
+            }
+        }
+        toastr()->success('Data uğurla əlavə edildi');
+        return redirect()->back();
+    }
 }

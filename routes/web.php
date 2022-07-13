@@ -67,4 +67,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
         ->name('home.partnyor.post');
 
     Route::resource('partnyorlar', PartnyorImageController::class);
+
+    Route::get('about-banner',[OptionController::class,'aboutBanner'])
+        ->name('about.banner');
+
+    Route::post('about-banner',[OptionController::class,'aboutBannerPost'])
+        ->name('about.banner.post');
 });

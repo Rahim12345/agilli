@@ -168,16 +168,16 @@
                        <line x1="4" y1="12" x2="20" y2="12"></line>
                     </svg>
                   </span>
-                        <span class="nav-link-title" style="
-                        @if(in_array(request()->segment(2),[
-                            'home-banner',
-                            'strateji',
-                        ]))
-                            color: #206bc4;
-                        @endif
-                        ">
+                    <span class="nav-link-title" style="
+                    @if(in_array(request()->segment(2),[
+                        'home-banner',
+                        'strateji',
+                    ]))
+                        color: #206bc4;
+                    @endif
+                    ">
                         Menus
-                      </span>
+                    </span>
                     </a>
                     <div class="dropdown-menu
                     @if(in_array(request()->segment(2),[
@@ -235,6 +235,21 @@
                                     Team
                                 </a>
                             </div>
+
+
+
+                            <a class="dropdown-item
+                            @if(in_array(request()->segment(2),[
+                                                    'about-banner',
+                                                ]))
+                                active show
+@endif
+
+                                " href="{{ route('about.banner') }}">
+                                About
+                            </a>
+
+
                         </div>
                     </div>
                 </li>
