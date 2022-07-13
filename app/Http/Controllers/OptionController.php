@@ -6,8 +6,10 @@ use App\Helpers\Options;
 use App\Models\Option;
 use App\Http\Requests\StoreOptionRequest;
 use App\Http\Requests\UpdateOptionRequest;
+use App\Models\PartnyorImage;
 use App\Traits\FileUploader;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OptionController extends Controller
 {
@@ -236,6 +238,63 @@ class OptionController extends Controller
             {
                 Option::updateOrCreate(
                     ['key'   => $key],
+                    [
+                        'value' => $request->post($key)
+                    ]
+                );
+            }
+        }
+
+        toastr()->success('Data uğurla əlavə edildi');
+
+        return redirect()->back();
+    }
+
+    public function partnyor($type)
+    {
+        if ($type == 'partnyor')
+        {
+            $t = 1;
+        }
+        else
+        {
+            $t = 2;
+        }
+        return view('back.pages.home.partnyor',[
+            'home_partnyor_title_az'=>Options::getOption($type.'_home_partnyor_title_az'),
+            'home_partnyor_title_en'=>Options::getOption($type.'_home_partnyor_title_en'),
+            'home_partnyor_text_az'=>Options::getOption($type.'_home_partnyor_text_az'),
+            'home_partnyor_text_en'=>Options::getOption($type.'_home_partnyor_text_en'),
+            'images'=>PartnyorImage::where('type',$t)->latest()->get(),
+            'type'=>$type,
+        ]);
+    }
+
+    public function partnyorPost(Request $request)
+    {
+        $this->validate($request,[
+            'home_partnyor_title_az'=>'nullable|max:10000',
+            'home_partnyor_title_en'=>'nullable|max:10000',
+            'home_partnyor_text_az'=>'nullable|max:10000',
+            'home_partnyor_text_en'=>'nullable|max:10000',
+            'type'=>['required',Rule::in(['partnyor','team'])],
+        ],[],[
+            'home_partnyor_title_az'=>'Title (AZ)',
+            'home_partnyor_title_en'=>'Title (EN)',
+            'home_partnyor_text_az'=>'Text (AZ)',
+            'home_partnyor_text_en'=>'Text (EN)',
+        ]);
+
+        foreach ($request->keys() as $key)
+        {
+            if ($key == '_token' || $key == 'type')
+            {
+
+            }
+            else
+            {
+                Option::updateOrCreate(
+                    ['key'   => $request->type.'_'.$key],
                     [
                         'value' => $request->post($key)
                     ]

@@ -145,6 +145,7 @@
                     @if(in_array(request()->segment(2),[
                         'home-banner',
                         'strateji',
+                        'partnyor',
                     ]))
                         show
                     @endif
@@ -152,6 +153,7 @@
                     @if(in_array(request()->segment(2),[
                         'home-banner',
                         'strateji',
+                        'partnyor',
                     ]))
                         true
                     @else
@@ -181,6 +183,7 @@
                     @if(in_array(request()->segment(2),[
                         'home-banner',
                         'strateji',
+                        'partnyor',
                     ]))
                         show
                     @endif
@@ -191,6 +194,7 @@
                             @if(in_array(request()->segment(2),[
                                                     'home-banner',
                                                     'strateji',
+                                                    'partnyor',
                                                 ]))
                             active show
                             @endif
@@ -199,6 +203,7 @@
                             @if(in_array(request()->segment(2),[
                                                     'home-banner',
                                                     'strateji',
+                                                    'partnyor',
                                                 ]))
                                 true
                             @else
@@ -212,6 +217,7 @@
                             @if(in_array(request()->segment(2),[
                                                     'home-banner',
                                                     'strateji',
+                                                    'partnyor',
                                                 ]))
                                 show
                             @endif
@@ -221,6 +227,12 @@
                                 </a>
                                 <a href="{{ route('home.strateji') }}" class="dropdown-item {{ request()->segment(2) == 'strateji' ? 'active' : '' }}">
                                     Startegiya Kreativ Digital
+                                </a>
+                                <a href="{{ route('home.partnyor',['type'=>'partnyor']) }}" class="dropdown-item {{ request()->segment(3) == 'partnyor' ? 'active' : '' }}">
+                                    Partnyor
+                                </a>
+                                <a href="{{ route('home.partnyor',['type'=>'team']) }}" class="dropdown-item {{ request()->segment(3) == 'team' ? 'active' : '' }}">
+                                    Team
                                 </a>
                             </div>
                         </div>

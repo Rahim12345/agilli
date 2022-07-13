@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\PartnyorImageController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\sign\sign_in_upController;
 use Illuminate\Support\Facades\Route;
@@ -58,4 +59,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
 
     Route::post('strateji',[OptionController::class,'stratejiPost'])
         ->name('home.strateji.post');
+
+    Route::get('partnyor/{type}',[OptionController::class,'partnyor'])
+        ->name('home.partnyor');
+
+    Route::post('partnyor',[OptionController::class,'partnyorPost'])
+        ->name('home.partnyor.post');
+
+    Route::resource('partnyorlar', PartnyorImageController::class);
 });
