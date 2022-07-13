@@ -11,7 +11,7 @@
         <div class="mb-3 col-md-12">
             <div class="content">
                 <div class="mb-3 col-md-8 offset-md-2">
-                    <form action="{{ route('home.banner.post') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('about.banner.post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             @if($about_banner_src)

@@ -146,6 +146,9 @@
                         'home-banner',
                         'strateji',
                         'partnyor',
+                        'about-banner',
+                        'project-banner',
+                        'category'
                     ]))
                         show
                     @endif
@@ -154,6 +157,9 @@
                         'home-banner',
                         'strateji',
                         'partnyor',
+                        'about-banner',
+                        'project-banner',
+                        'category'
                     ]))
                         true
                     @else
@@ -172,6 +178,10 @@
                     @if(in_array(request()->segment(2),[
                         'home-banner',
                         'strateji',
+                        'partnyor',
+                        'about-banner',
+                        'project-banner',
+                        'category'
                     ]))
                         color: #206bc4;
                     @endif
@@ -180,77 +190,117 @@
                     </span>
                     </a>
                     <div class="dropdown-menu
-                    @if(in_array(request()->segment(2),[
-                        'home-banner',
-                        'strateji',
-                        'partnyor',
-                    ]))
-                        show
-                    @endif
-
+                        @if(in_array(request()->segment(2),[
+                            'home-banner',
+                            'strateji',
+                            'partnyor',
+                            'about-banner',
+                            'project-banner',
+                        ]))
+                            show
+                        @endif
                     ">
+                        <div class="dropend">
+                                    <a class="dropdown-item dropdown-toggle
+                            @if(in_array(request()->segment(2),[
+                                                    'home-banner',
+                                                    'strateji',
+                                                    'partnyor',
+                                                ]))
+                                        active show
+@endif
+
+                                        " href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="
+                            @if(in_array(request()->segment(2),[
+                                                    'home-banner',
+                                                    'strateji',
+                                                    'partnyor',
+                                                ]))
+                                        true
+                            @else
+                                        false
+                            @endif
+
+                                        ">
+                                        Home
+                                    </a>
+                                    <div class="dropdown-menu
+                            @if(in_array(request()->segment(2),[
+                                                    'home-banner',
+                                                    'strateji',
+                                                    'partnyor',
+                                                ]))
+                                        show
+                            @endif
+                                        ">
+                                        <a href="{{ route('home.banner') }}" class="dropdown-item {{ request()->segment(2) == 'home-banner' ? 'active' : '' }}">
+                                            WATCH SHOWREEL
+                                        </a>
+                                        <a href="{{ route('home.strateji') }}" class="dropdown-item {{ request()->segment(2) == 'strateji' ? 'active' : '' }}">
+                                            Startegiya Kreativ Digital
+                                        </a>
+                                        <a href="{{ route('home.partnyor',['type'=>'partnyor']) }}" class="dropdown-item {{ request()->segment(3) == 'partnyor' ? 'active' : '' }}">
+                                            Partnyor
+                                        </a>
+                                        <a href="{{ route('home.partnyor',['type'=>'team']) }}" class="dropdown-item {{ request()->segment(3) == 'team' ? 'active' : '' }}">
+                                            Team
+                                        </a>
+                                    </div>
+
+
+                        </div>
+
                         <div class="dropend">
                             <a class="dropdown-item dropdown-toggle
                             @if(in_array(request()->segment(2),[
-                                                    'home-banner',
-                                                    'strateji',
-                                                    'partnyor',
-                                                ]))
-                            active show
+                                'project-banner',
+                                'category',
+                            ]))
+                                active show
                             @endif
 
-                            " href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="
+                                " href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="
                             @if(in_array(request()->segment(2),[
-                                                    'home-banner',
-                                                    'strateji',
-                                                    'partnyor',
-                                                ]))
+                                'project-banner',
+                                'category',
+                            ]))
                                 true
                             @else
                                 false
                             @endif
-
-                            ">
-                                Home
+                                ">
+                                Project
                             </a>
                             <div class="dropdown-menu
                             @if(in_array(request()->segment(2),[
-                                                    'home-banner',
-                                                    'strateji',
-                                                    'partnyor',
-                                                ]))
+                                'project-banner',
+                                'category',
+                            ]))
                                 show
                             @endif
-                            ">
-                                <a href="{{ route('home.banner') }}" class="dropdown-item {{ request()->segment(2) == 'home-banner' ? 'active' : '' }}">
+                                ">
+                                <a href="{{ route('project.banner') }}" class="dropdown-item {{ request()->segment(2) == 'project-banner' ? 'active' : '' }}">
                                     WATCH SHOWREEL
                                 </a>
-                                <a href="{{ route('home.strateji') }}" class="dropdown-item {{ request()->segment(2) == 'strateji' ? 'active' : '' }}">
-                                    Startegiya Kreativ Digital
-                                </a>
-                                <a href="{{ route('home.partnyor',['type'=>'partnyor']) }}" class="dropdown-item {{ request()->segment(3) == 'partnyor' ? 'active' : '' }}">
-                                    Partnyor
-                                </a>
-                                <a href="{{ route('home.partnyor',['type'=>'team']) }}" class="dropdown-item {{ request()->segment(3) == 'team' ? 'active' : '' }}">
-                                    Team
+                                <a href="{{ route('category.index') }}" class="dropdown-item {{ request()->segment(2) == 'project-banner' ? 'active' : '' }}">
+                                    Category
                                 </a>
                             </div>
 
 
 
-                            <a class="dropdown-item
+                        </div>
+
+                        <a class="dropdown-item
                             @if(in_array(request()->segment(2),[
                                                     'about-banner',
                                                 ]))
-                                active show
+                            active show
 @endif
 
-                                " href="{{ route('about.banner') }}">
-                                About
-                            </a>
-
-
-                        </div>
+                            " href="{{ route('about.banner') }}">
+                            About
+                        </a>
                     </div>
                 </li>
 

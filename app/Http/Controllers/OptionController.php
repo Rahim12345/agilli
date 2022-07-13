@@ -337,9 +337,64 @@ class OptionController extends Controller
         {
             if ($key != '_token')
             {
-                if ($key == 'home_banner_src')
+                if ($key == 'about_banner_src')
                 {
-                    $src   = $this->fileUpdate(Options::getOption('home_banner_src'), $request->hasFile('home_banner_src'), $request->home_banner_src, 'files/home-banner/');
+                    $src   = $this->fileUpdate(Options::getOption('about_banner_src'), $request->hasFile('about_banner_src'), $request->about_banner_src, 'files/about-banner/');
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $src
+                        ]
+                    );
+                }
+                else
+                {
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $request->post($key)
+                        ]
+                    );
+                }
+            }
+        }
+        toastr()->success('Data uğurla əlavə edildi');
+        return redirect()->back();
+    }
+
+    public function projectBanner()
+    {
+        return view('back.pages.project.project-banner',[
+            'project_banner_src'=>Options::getOption('project_banner_src'),
+            'project_banner_button_text_az'=>Options::getOption('project_banner_button_text_az'),
+            'project_banner_button_text_en'=>Options::getOption('project_banner_button_text_en'),
+            'project_banner_link'=>Options::getOption('project_banner_link')
+        ]);
+    }
+
+    public function projectBannerPost(Request $request)
+    {
+        $this->validate($request,[
+            'project_banner_src'=>'nullable|image',
+            'project_banner_button_text_az'=>'nullable|max:1000',
+            'project_banner_button_text_en'=>'nullable|max:1000',
+            'project_banner_link'=>'nullable|max:1000'
+        ],[],[
+            'project_banner_src'=>'Banner',
+            'project_banner_button_text_az'=>'Button(AZ)',
+            'project_banner_button_text_en'=>'Button(EN)',
+            'project_banner_link'=>'Link',
+        ]);
+
+
+
+        foreach ($request->keys() as $key)
+        {
+            if ($key != '_token')
+            {
+                if ($key == 'project_banner_src')
+                {
+                    $src   = $this->fileUpdate(Options::getOption('project_banner_src'), $request->hasFile('project_banner_src'), $request->project_banner_src, 'files/project-banner/');
                     Option::updateOrCreate(
                         ['key'   => $key],
                         [

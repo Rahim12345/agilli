@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PartnyorImageController;
 use App\Http\Controllers\profileController;
@@ -73,4 +74,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
 
     Route::post('about-banner',[OptionController::class,'aboutBannerPost'])
         ->name('about.banner.post');
+
+    Route::get('project-banner',[OptionController::class,'projectBanner'])
+        ->name('project.banner');
+
+    Route::post('project-banner',[OptionController::class,'projectBannerPost'])
+        ->name('project.banner.post');
+
+    Route::resource('category', CategoryController::class);
 });
