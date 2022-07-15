@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PartnyorImageController;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectImageController;
 use App\Http\Controllers\sign\sign_in_upController;
 use Illuminate\Support\Facades\Route;
 
@@ -82,4 +84,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
         ->name('project.banner.post');
 
     Route::resource('category', CategoryController::class);
+
+    Route::resource('project', ProjectController::class);
+    Route::resource('project-images', ProjectImageController::class);
 });

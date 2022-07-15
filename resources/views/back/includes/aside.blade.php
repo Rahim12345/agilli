@@ -196,6 +196,7 @@
                             'partnyor',
                             'about-banner',
                             'project-banner',
+                            'category',
                         ]))
                             show
                         @endif
@@ -282,8 +283,11 @@
                                 <a href="{{ route('project.banner') }}" class="dropdown-item {{ request()->segment(2) == 'project-banner' ? 'active' : '' }}">
                                     WATCH SHOWREEL
                                 </a>
-                                <a href="{{ route('category.index') }}" class="dropdown-item {{ request()->segment(2) == 'project-banner' ? 'active' : '' }}">
+                                <a href="{{ route('category.index') }}" class="dropdown-item {{ request()->segment(2) == 'category' ? 'active' : '' }}">
                                     Category
+                                </a>
+                                <a href="{{ route('project.index') }}" class="dropdown-item {{ request()->segment(2) == 'project' ? 'active' : '' }}">
+                                    Project
                                 </a>
                             </div>
 
