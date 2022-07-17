@@ -17,4 +17,9 @@ class Project extends Model
     {
         return $this->hasMany(ProjectImage::class,'project_id','id')->orderBy('order_no','asc');
     }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class,'id','category_id');
+    }
 }

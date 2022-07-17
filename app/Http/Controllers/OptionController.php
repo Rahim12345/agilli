@@ -26,6 +26,10 @@ class OptionController extends Controller
             'unvan_en'=>Options::getOption('unvan_en'),
             'email'=>Options::getOption('email'),
             'tel'=>Options::getOption('tel'),
+            'instagram'=>Options::getOption('instagram'),
+            'facebook'=>Options::getOption('facebook'),
+            'linkedin'=>Options::getOption('linkedin'),
+            'telegram'=>Options::getOption('telegram'),
         ]);
     }
 

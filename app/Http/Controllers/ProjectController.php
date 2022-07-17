@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Category;
 use App\Models\ProjectImage;
 use App\Traits\FileUploader;
 
@@ -30,7 +31,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('back.pages.project.create');
+        $categories = Category::latest()->get();
+        return view('back.pages.project.create', compact('categories'));
     }
 
     /**
@@ -45,6 +47,7 @@ class ProjectController extends Controller
 
         $project = Project::create([
             'cover'=>$cover,
+            'category_id'=>$request->category_id,
             'title_1_az'=>$request->title_1_az,
             'title_1_en'=>$request->title_1_en,
             'title_2_az'=>$request->title_2_az,
@@ -99,7 +102,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('back.pages.project.edit',compact('project'));
+        $categories = Category::latest()->get();
+        return view('back.pages.project.edit',compact('project','categories'));
     }
 
     /**
@@ -115,6 +119,7 @@ class ProjectController extends Controller
 
         $project->update([
             'cover'=>$cover,
+            'category_id'=>$request->category_id,
             'title_1_az'=>$request->title_1_az,
             'title_1_en'=>$request->title_1_en,
             'title_2_az'=>$request->title_2_az,

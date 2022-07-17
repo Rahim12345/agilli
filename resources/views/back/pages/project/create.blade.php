@@ -25,6 +25,19 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="form-group mb-3 col-md-12">
+                                <label class="form-label" for="category_id">Category</label>
+                                <select name="category_id" id="category_id"  class="form-control @error('category_id') is-invalid  @enderror">
+                                    <option value="">Birini seçin</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>{{ $category->name_az }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="form-group mb-3 col-md-6">
                                 <label class="form-label" for="title_1_az">Title 1(AZ)</label>
                                 <input type="text" class="form-control @error('title_1_az') is-invalid  @enderror" id="title_1_az" name="title_1_az" value="{{ old('title_1_az') }}">

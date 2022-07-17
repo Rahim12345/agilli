@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PartnyorImageController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\ProjectController;
@@ -43,10 +44,14 @@ Route::post('profile',[ profileController::class,'profileUpdate' ])
     ->name('front.profile.update')
     ->middleware('auth');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('front.home');
+    Route::group(['middleware'=>'locale'],function (){
+        Route::get('/',[PagesController::class,'home'])->name('front.home');
 
+        Route::get('/about',[PagesController::class,'about'])->name('front.about');
+
+        Route::get('/works',[PagesController::class,'works'])->name('front.works');
+
+    });
 
 Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
 

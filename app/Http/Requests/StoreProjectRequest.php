@@ -25,6 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'cover'=>'nullable|image',
+            'category_id'=>'required|exists:categories,id',
             'title_1_az'=>'nullable|max:255',
             'title_1_en'=>'nullable|max:255',
             'title_2_az'=>'nullable|max:255',
@@ -50,6 +51,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'cover'=>'Cover',
+            'category_id'=>'Category',
             'title_1_az'=>'Title 1(AZ)',
             'title_1_en'=>'Title 1(EN)',
             'title_2_az'=>'Title 2(AZ)',

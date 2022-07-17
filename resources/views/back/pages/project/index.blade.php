@@ -17,12 +17,14 @@
                     <table class="table">
                         <tr>
                             <td>Cover</td>
+                            <td>Category</td>
                             <td>Title(AZ)</td>
                             <td>Action</td>
                         </tr>
                         @foreach($projects as $project)
                             <tr>
                                 <td><img src="{{ asset('files/project-banner/'.$project->cover) }}" style="width: 100px" alt=""></td>
+                                <td>{{ $project->category ? $project->category->name_az : '' }}</td>
                                 <td>{{ $project->title_1_az }}</td>
                                 <td>
                                     <div class="btn-list flex-nowrap">
