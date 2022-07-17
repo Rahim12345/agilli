@@ -181,7 +181,8 @@
                         'partnyor',
                         'about-banner',
                         'project-banner',
-                        'category'
+                        'category',
+                        'project',
                     ]))
                         color: #206bc4;
                     @endif
@@ -197,6 +198,7 @@
                             'about-banner',
                             'project-banner',
                             'category',
+                            'project',
                         ]))
                             show
                         @endif
@@ -256,6 +258,7 @@
                             @if(in_array(request()->segment(2),[
                                 'project-banner',
                                 'category',
+                                'project',
                             ]))
                                 active show
                             @endif
@@ -264,6 +267,7 @@
                             @if(in_array(request()->segment(2),[
                                 'project-banner',
                                 'category',
+                                'project',
                             ]))
                                 true
                             @else
@@ -276,6 +280,7 @@
                             @if(in_array(request()->segment(2),[
                                 'project-banner',
                                 'category',
+                                'project',
                             ]))
                                 show
                             @endif
@@ -300,8 +305,7 @@
                                                     'about-banner',
                                                 ]))
                             active show
-@endif
-
+                            @endif
                             " href="{{ route('about.banner') }}">
                             About
                         </a>

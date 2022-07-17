@@ -5,17 +5,34 @@ namespace App\Http\Controllers;
 use App\Models\ProjectImage;
 use App\Http\Requests\StoreProjectImageRequest;
 use App\Http\Requests\UpdateProjectImageRequest;
+use App\Traits\FileUploader;
+use Illuminate\Http\Request;
 
 class ProjectImageController extends Controller
 {
+    use FileUploader;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if (isset($_GET["action"])) {
+            if ($_GET["action"] == 'fetch_data') {
+                $data = ProjectImage::where('project_id',$request->project_id)->orderBy('order_no','asc')->get();
+
+                return json_encode($data);
+            }
+
+            if ($_GET['action'] == 'update') {
+                for ($count = 0; $count < count($_GET["page_id_array"]); $count++) {
+                    ProjectImage::whereId($_GET["page_id_array"][$count])->update([
+                        'order_no'=>($count + 1)
+                    ]);
+                }
+            }
+        }
     }
 
     /**
@@ -58,7 +75,13 @@ class ProjectImageController extends Controller
      */
     public function edit(ProjectImage $projectImage)
     {
-        //
+        $projectImage->update([
+            'col_12' => $projectImage->col_12 == 0 ? 1 : 0
+        ]);
+
+        toastr()->success('Status dəyişdirildi');
+
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +104,10 @@ class ProjectImageController extends Controller
      */
     public function destroy(ProjectImage $projectImage)
     {
-        //
+        $this->fileDelete('files/project-images/' . $projectImage->src);
+        $projectImage->delete();
+        toastr()->success('Data uğurla silindi');
+
+        return redirect()->back();
     }
 }

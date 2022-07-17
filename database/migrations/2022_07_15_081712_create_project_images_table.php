@@ -18,6 +18,7 @@ class CreateProjectImagesTable extends Migration
             $table->integer('project_id');
             $table->string('src')->nullable();
             $table->boolean('col_12')->default(0)->comment('0 : col-8, 1 : col-12');
+            $table->integer('order_no')->default(0);
             $table->timestamps();
         });
     }

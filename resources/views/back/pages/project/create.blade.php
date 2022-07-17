@@ -10,11 +10,21 @@
     <div class="content" style="margin-bottom: 100px">
         <div class="mb-3 col-md-12">
             <div class="content">
+                <div class="row">
+                    <a href="{{ route('project.index') }}" class="btn btn-danger">Bütün</a>
+                </div>
                 <div class="mb-3">
-                    <form action="{{ route('project.banner.post') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
+                            <div class="form-group mb-3 col-md-12">
+                                <label class="form-label" for="cover">Cover</label>
+                                <input type="file" class="form-control @error('cover') is-invalid  @enderror" id="cover" name="cover">
+                                @error('cover')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <div class="form-group mb-3 col-md-6">
                                 <label class="form-label" for="title_1_az">Title 1(AZ)</label>
                                 <input type="text" class="form-control @error('title_1_az') is-invalid  @enderror" id="title_1_az" name="title_1_az" value="{{ old('title_1_az') }}">
@@ -139,6 +149,13 @@
                                 <label class="form-label" for="copyrighter_en">Copyrighter (EN)</label>
                                 <input type="text" class="form-control @error('copyrighter_en') is-invalid  @enderror" id="copyrighter_en" name="copyrighter_en" value="{{ old('copyrighter_en') }}">
                                 @error('copyrighter_en')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3 col-md-12">
+                                <label class="form-label" for="images">Images</label>
+                                <input type="file" class="form-control @error('images') is-invalid  @enderror" id="images" name="images[]" multiple>
+                                @error('images')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
