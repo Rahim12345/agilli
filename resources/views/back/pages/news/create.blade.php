@@ -133,5 +133,74 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('text_1_az',{
+                language: '{{ app()->getLocale() }}',
+                filebrowserImageBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Images&_token={!! csrf_token() !!}',
+                filebrowserBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Files&_token={!! csrf_token() !!}',
+                toolbarGroups :[
+                    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                    { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+                    { name: 'insert' },
+                    { name: 'forms' },
+                    { name: 'styles' },
+                    { name: 'colors' },
+                    { name: 'tools'}
+                ],
+            });
+            CKEDITOR.replace('text_1_en',{
+                language: '{{ app()->getLocale() }}',
+                filebrowserImageBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Images&_token={!! csrf_token() !!}',
+                filebrowserBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Files&_token={!! csrf_token() !!}',
+                toolbarGroups :[
+                    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                    { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+                    { name: 'insert' },
+                    { name: 'forms' },
+                    { name: 'styles' },
+                    { name: 'colors' },
+                    { name: 'tools'}
+                ],
+            });
 
+            CKEDITOR.replace('text_2_az',{
+                language: '{{ app()->getLocale() }}',
+                filebrowserImageBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Images&_token={!! csrf_token() !!}',
+                filebrowserBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Files&_token={!! csrf_token() !!}',
+                toolbarGroups :[
+                    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                    { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+                    { name: 'insert' },
+                    { name: 'forms' },
+                    { name: 'styles' },
+                    { name: 'colors' },
+                    { name: 'tools'}
+                ],
+            });
+            CKEDITOR.replace('text_2_en',{
+                language: '{{ app()->getLocale() }}',
+                filebrowserImageBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Images&_token={!! csrf_token() !!}',
+                filebrowserBrowseUrl: $('#rootUrl').val()+'/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: $('#rootUrl').val()+'/laravel-filemanager/upload?type=Files&_token={!! csrf_token() !!}',
+                toolbarGroups :[
+                    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                    { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+                    { name: 'insert' },
+                    { name: 'forms' },
+                    { name: 'styles' },
+                    { name: 'colors' },
+                    { name: 'tools'}
+                ],
+            });
+        });
+    </script>
 @endsection

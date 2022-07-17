@@ -10,9 +10,14 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectImageController;
 use App\Http\Controllers\sign\sign_in_upController;
 use Illuminate\Support\Facades\Route;
+use UniSharp\LaravelFilemanager\Lfm;
 
 Route::get('langs/{locale}',[profileController::class,'langSwitcher'])
     ->name('lang.swithcher');
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+    Lfm::routes();
+});
 
 Route::get('mode/{theme}',[profileController::class,'modeSwitcher'])
     ->name('mode.swithcher');
