@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PartnyorImageController;
 use App\Http\Controllers\profileController;
@@ -87,4 +88,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
 
     Route::resource('project', ProjectController::class);
     Route::resource('project-images', ProjectImageController::class);
+
+    Route::get('news-banner',[OptionController::class,'newsBanner'])
+        ->name('news.banner');
+
+    Route::post('news-banner',[OptionController::class,'newsBannerPost'])
+        ->name('news.banner.post');
+    Route::resource('news', NewsController::class);
 });

@@ -283,7 +283,7 @@
                                     <a href="/admin/project-images/`+data[count].id+`/edit"
                                         class="btn btn-primary">`+ (data[count].col_12 == 0 ? `col-12 et` : `col-8 et`) +`</a>
                                     <div>
-                                        <form action="admin/project-images/`+data[count].id+`"
+                                        <form action="/admin/project-images/`+data[count].id+`"
                                             method="post">
                                             @csrf
                                             @method('DELETE')

@@ -148,6 +148,7 @@
                         'partnyor',
                         'about-banner',
                         'project-banner',
+                        'news-banner',
                         'category'
                     ]))
                         show
@@ -159,6 +160,7 @@
                         'partnyor',
                         'about-banner',
                         'project-banner',
+                        'news-banner',
                         'category'
                     ]))
                         true
@@ -181,6 +183,7 @@
                         'partnyor',
                         'about-banner',
                         'project-banner',
+                        'news-banner',
                         'category',
                         'project',
                     ]))
@@ -197,6 +200,7 @@
                             'partnyor',
                             'about-banner',
                             'project-banner',
+                            'news-banner',
                             'category',
                             'project',
                         ]))
@@ -299,6 +303,50 @@
 
 
                         </div>
+
+
+                        <div class="dropend">
+                            <a class="dropdown-item dropdown-toggle
+                            @if(in_array(request()->segment(2),[
+                                'news-banner',
+                                'news',
+                            ]))
+                                active show
+                            @endif
+
+                                " href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="
+                            @if(in_array(request()->segment(2),[
+                                'news-banner',
+                                'news',
+                            ]))
+                                true
+                            @else
+                                false
+                            @endif
+                                ">
+                                News
+                            </a>
+                            <div class="dropdown-menu
+                            @if(in_array(request()->segment(2),[
+                                'news-banner',
+                                'news',
+                            ]))
+                                show
+                            @endif
+                                ">
+                                <a href="{{ route('news.banner') }}" class="dropdown-item {{ request()->segment(2) == 'news-banner' ? 'active' : '' }}">
+                                    WATCH SHOWREEL
+                                </a>
+                                <a href="{{ route('news.index') }}" class="dropdown-item {{ request()->segment(2) == 'news' ? 'active' : '' }}">
+                                    News
+                                </a>
+                            </div>
+
+
+
+                        </div>
+
+
 
                         <a class="dropdown-item
                             @if(in_array(request()->segment(2),[

@@ -416,4 +416,59 @@ class OptionController extends Controller
         toastr()->success('Data uğurla əlavə edildi');
         return redirect()->back();
     }
+
+    public function newsBanner()
+    {
+        return view('back.pages.news.news-banner',[
+            'news_banner_src'=>Options::getOption('news_banner_src'),
+            'news_banner_button_text_az'=>Options::getOption('news_banner_button_text_az'),
+            'news_banner_button_text_en'=>Options::getOption('news_banner_button_text_en'),
+            'news_banner_link'=>Options::getOption('news_banner_link')
+        ]);
+    }
+
+    public function newsBannerPost(Request $request)
+    {
+        $this->validate($request,[
+            'news_banner_src'=>'nullable|image',
+            'news_banner_button_text_az'=>'nullable|max:1000',
+            'news_banner_button_text_en'=>'nullable|max:1000',
+            'news_banner_link'=>'nullable|max:1000'
+        ],[],[
+            'news_banner_src'=>'Banner',
+            'news_banner_button_text_az'=>'Button(AZ)',
+            'news_banner_button_text_en'=>'Button(EN)',
+            'news_banner_link'=>'Link',
+        ]);
+
+
+
+        foreach ($request->keys() as $key)
+        {
+            if ($key != '_token')
+            {
+                if ($key == 'news_banner_src')
+                {
+                    $src   = $this->fileUpdate(Options::getOption('news_banner_src'), $request->hasFile('news_banner_src'), $request->news_banner_src, 'files/news-banner/');
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $src
+                        ]
+                    );
+                }
+                else
+                {
+                    Option::updateOrCreate(
+                        ['key'   => $key],
+                        [
+                            'value' => $request->post($key)
+                        ]
+                    );
+                }
+            }
+        }
+        toastr()->success('Data uğurla əlavə edildi');
+        return redirect()->back();
+    }
 }
