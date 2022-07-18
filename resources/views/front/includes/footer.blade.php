@@ -34,7 +34,7 @@
                         <span><a href="{!! route('front.works') !!}">{{ __('menu.works') }}</a></span>
                     </div>
                     <div class="content fot-news">
-                        <span><a href="#0">{{ __('menu.news') }}</a></span>
+                        <span><a href="{!! route('front.news') !!}">{{ __('menu.news') }}</a></span>
                         <span><a href="contact.html">{{ __('menu.contact') }}</a></span>
                     </div>
                 </div>

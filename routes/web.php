@@ -51,6 +51,10 @@ Route::post('profile',[ profileController::class,'profileUpdate' ])
 
         Route::get('/works',[PagesController::class,'works'])->name('front.works');
 
+        Route::get('/news',[PagesController::class,'news'])->name('front.news');
+        Route::post('/news',[PagesController::class,'newsPost'])->name('front.news.post');
+        Route::get('/news/{id}',[PagesController::class,'newsSingle'])->name('front.news.single');
+
     });
 
 Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){

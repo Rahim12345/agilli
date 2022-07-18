@@ -72,86 +72,12 @@
 
     <!-- PARTNERS ==================================== -->
     <section class="partners mb-5">
-        <div class="container">
-            <div class="row">
-                <div class="partners_all col-xs-12 col-lg-12 col-md-12"  data-aos="zoom-in" data-aos-duration="1000">
-                    <div class="content">
-                        <h2>partnyorlar</h2>
-                        <span>Onlar kimi sizin üçün də ağıllı həllər təklif edə bilərik.</span>
-                    </div>
-                    <div class="carousels">
-                        <div class="carousel-left ">
-                            <div class="items owl-carousel owl-js">
-
-                                <div class="item">
-                                    <div class="inside_item">
-                                        <div >
-                                            <img  src="img/global/partners/mitsubishi.png" alt="Some Moments">
-                                        </div>
-                                        <div >
-                                            <img src="{{ asset('a-n') }}/img/global/partners/google.png" alt="Some Moments">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="inside_item">
-                                        <div >
-                                            <img src="{{ asset('a-n') }}/img/global/partners/mitsubishi.png" alt="Some Moments">
-                                        </div>
-                                        <div >
-                                            <img src="{{ asset('a-n') }}/img/global/partners/google.png" alt="Some Moments">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('front.includes.partnyors')
     </section>
 
     <!-- TEAM ==================================== -->
     <section class="team">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="team_left ">
-                    <div class="logo_team wow"  data-aos="fade-right" data-aos-duration="1200" data-wow-delay=".6s">
-                        <div class="image" >
-                            <img class="desktop" src="img/global/partners/at.png" alt="">
-                            <img class="mobile" src="img/global/partners/atplus.png" alt="">
-                        </div>
-                        <span>1st sit amet, consectetur adipiscing elit. Aliquam tempus ac.</span>
-                    </div>
-                    <div class="title wow" data-aos="fade-left" data-aos-duration="1200" data-wow-delay=".6s">
-                        <h2>komanda</h2>
-                    </div>
-                </div>
-
-                <div class="team_right owl-carousel owl-theme owl-loaded owl-drag">
-                    <div class="item" data-aos="zoom-in" data-aos-duration="1000" >
-                        <img src="{{ asset('a-n') }}/img/global/team/team_banner.png" alt="">
-                    </div>
-                    <div class="item " data-aos="zoom-in" data-aos-duration="1000">
-                        <img src="{{ asset('a-n') }}/img/global/team/team_banner.png" alt="">
-                    </div>
-                    <div class="item " data-aos="zoom-in" data-aos-duration="1000">
-                        <img src="{{ asset('a-n') }}/img/global/team/team_banner.png" alt="">
-                    </div>
-                    <div class="item " data-aos="zoom-in" data-aos-duration="1000">
-                        <img src="{{ asset('a-n') }}/img/global/team/team_banner.png" alt="">
-                    </div>
-                    <div class="item " data-aos="zoom-in" data-aos-duration="1000">
-                        <img src="{{ asset('a-n') }}/img/global/team/team_banner.png" alt="">
-                    </div>
-                    <div class="item" data-aos="zoom-in" data-aos-duration="1000">
-                        <img src="{{ asset('a-n') }}/img/global/team/team_banner.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('front.includes.team')
     </section>
 
     <!-- NEWS ==================================== -->

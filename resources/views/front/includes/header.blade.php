@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ env('APP_NAME') }} @yield('title')</title>
@@ -69,7 +70,7 @@
                                         <li><a href="{!! route('front.home') !!}" class="active">{{ __('menu.home') }}</a></li>
                                         <li><a href="{!! route('front.about') !!}">{{ __('menu.about') }}</a></li>
                                         <li><a href="{!! route('front.works') !!}">{{ __('menu.works') }}</a></li>
-                                        <li><a href="news.html">{{ __('menu.news') }}</a></li>
+                                        <li><a href="{!! route('front.news') !!}">{{ __('menu.news') }}</a></li>
                                     </ul>
                                 </div>
                             </div>
