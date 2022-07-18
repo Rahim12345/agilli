@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\PartnyorImage;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -14,12 +15,19 @@ class PagesController extends Controller
         return view('front.pages.home', [
             'partners' => PartnyorImage::where('type', 1)->latest()->get(),
             'teams' => PartnyorImage::where('type', 2)->latest()->get(),
+            'last_news'=>News::orderBy('id','desc')->take(2)->get(),
+            'next_news'=>News::orderBy('id','desc')->skip(2)->first()
         ]);
     }
 
     public function about()
     {
-        return view('front.pages.about');
+        return view('front.pages.about',[
+            'partners' => PartnyorImage::where('type', 1)->latest()->get(),
+            'teams' => PartnyorImage::where('type', 2)->latest()->get(),
+            'last_news'=>News::orderBy('id','desc')->take(2)->get(),
+            'next_news'=>News::orderBy('id','desc')->skip(2)->first()
+        ]);
     }
 
     public function works()
@@ -27,6 +35,40 @@ class PagesController extends Controller
         return view('front.pages.works', [
             'categories' => Category::latest()->get()
         ]);
+    }
+
+    public function worksPost(Request $request)
+    {
+        if ($request->category_id == 0)
+        {
+            $projects = Project::with('category')->offset($request->start)->limit($request->limit)->get();
+        }
+        else
+        {
+            $projects = Project::with('category')->where('category_id',$request->category_id)->offset($request->start)->limit($request->limit)->get();
+        }
+
+        $output = '';
+        foreach ($projects as $project)
+        {
+            $output .= '
+                <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_'.str_slug($project->category->{'name_'.app()->getLocale()}).'" onclick="openpage(\''.route('front.works.single',['id'=>$project->id]).'\')" >
+                    <div class="image">
+                        <img src="'.asset('files/project-banner/'.$project->cover).'">
+                    </div>
+                </div>
+            ';
+        }
+
+        return $output;
+    }
+
+    public function worksSingle($id)
+    {
+        $project = Project::findOrFail($id);
+
+        $previous = News::where('id', '<', $id)->orderBy('id','desc')->first();
+        return view('front.pages.news-single', compact('project', 'previous'));
     }
 
     public function news()

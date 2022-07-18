@@ -32,66 +32,12 @@
 
         <!-- PARTNERS ==================================== -->
         <section class="partners mb-5">
-            <div class="container">
-                <div class="row">
-                    <div class="partners_all col-xs-10 col-lg-10 col-md-12 ">
-                        <div class="content">
-                            <h2>partnyorlar</h2>
-                            <span>Onlar kimi sizin üçün də ağıllı həllər təklif edə bilərik.</span>
-                        </div>
-                        <div class="carousels">
-                            <div class="carousel-left ">
-                                <div class="swiper-container _js_carosuel">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide slide-img">
-                                            <img class="img-fluid" src="img/global/partners/partners-all.png" alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="img/global/partners/partners-all.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-right ">
-                                <h2>Dİgər partNyorlar</h2>
-                                <div class="right-btn">
-                                    <button type="button" class="btn btn-next">
-                                        <img src="img/global/team/pink-arrow.png" alt="">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('front.includes.partnyors')
         </section>
 
         <!-- TEAM ==================================== -->
         <section class="team">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="team_left ">
-                        <div class="logo_team">
-                            <div class="image">
-                                <img src="img/global/team/team_logo.png" alt="">
-                            </div>
-                            <span>1st sit amet, consectetur adipiscing elit. Aliquam tempus ac.</span>
-                        </div>
-                        <div class="title">
-                            <h2>komanda</h2>
-                        </div>
-                    </div>
-
-                    <div class="team_right owl-carousel owl-theme">
-                        <div class="item"><img src="img/global/team/team_banner.png" alt=""></div>
-                        <div class="item"><img src="img/global/team/team_banner.png" alt=""></div>
-                        <div class="item"><img src="img/global/team/team_banner.png" alt=""></div>
-                        <div class="item"><img src="img/global/team/team_banner.png" alt=""></div>
-                        <div class="item"><img src="img/global/team/team_banner.png" alt=""></div>
-                        <div class="item"><img src="img/global/team/team_banner.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
+            @include('front.includes.team')
         </section>
 
         <!-- NEWS ==================================== -->
@@ -99,35 +45,30 @@
         <div class="container-fluid">
             <div class="title">YENİ</div>
             <div class="row">
-                <div class="col-lg-2 left">
-                    <h2>ƏSAS YENİLİKLƏR</span>
+                <div class="col-lg-2 left" data-aos="zoom-in" data-aos-duration="1200" data-wow-delay=".4s">
+                    <h2>{{ __('menu.main_news') }}<h2>
                 </div>
-                <div class="col-lg-4 box">
-                    <div class="image">
-                        <img src="img/global/news/news1.png" alt="">
-                        <div class="content">
-                            <h2>Reamon del teromsaw</h2>
-                            <span>Today 20:34</span>
+                @foreach($last_news as $last_new)
+                    <div class="col-lg-4 col-md-6 box  wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".3s" onclick="openpage('{!! route('front.news.single',['id'=>$last_new->id]) !!}')" >
+                        <div class="image">
+                            <img src="{{ asset('files/news-banner/'.$last_new->cover) }}" alt="">
+                            <div class="content">
+                                <h2>{{ $last_new->{'title_'.app()->getLocale()} }}</h2>
+                                <span>{{ $last_new->{'release_date_'.app()->getLocale()} }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 box">
-                    <div class="image">
-                        <img src="img/global/news/news2.png" alt="">
-                        <div class="content">
-                            <h2>Warona somena desozien goen</h2>
-                            <span>Today 20:34</span>
+                @endforeach
+                @if($next_news)
+                    <div class="col-lg-2 right" onclick="openpage('{!! route('front.news.single',['id'=>$next_news->id]) !!}')" data-aos="fade-left" data-aos-duration="1200" data-wow-delay=".4s">
+                        <h2>Dİgər xəbərlər</h2>
+                        <div class="right-btn">
+                            <button type="button" class="btn btn-next">
+                                <img src="{{ asset('a-n/img/global/news/arrow-right.png') }}" alt="">
+                            </button>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-2 right">
-                    <h2>Dİgər xəbərlər</h2>
-                    <div class="right-btn">
-                        <button type="button" class="btn btn-next">
-                            <img src="img/global/news/arrow-right.png" alt="">
-                        </button>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
         </section>

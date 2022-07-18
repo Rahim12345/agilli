@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('a-n/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @yield('css')
 </head>
 
@@ -22,17 +23,17 @@
 
 
 
-<div class="preloader">
-    <div class="preloader__container">
-            <h1 class="preloader__container__percent"></h1>
-        <div class="preloader__container__preload">
-        <div class="preloader__container__preload__dot">         </div>
-        <div class="preloader__container__preload__dot">         </div>
-        <div class="preloader__container__preload__dot">         </div>
-        <div class="preloader__container__preload__dot">         </div>
-        </div>
-    </div>
-</div>
+{{--<div class="preloader">--}}
+{{--    <div class="preloader__container">--}}
+{{--            <h1 class="preloader__container__percent"></h1>--}}
+{{--        <div class="preloader__container__preload">--}}
+{{--        <div class="preloader__container__preload__dot">         </div>--}}
+{{--        <div class="preloader__container__preload__dot">         </div>--}}
+{{--        <div class="preloader__container__preload__dot">         </div>--}}
+{{--        <div class="preloader__container__preload__dot">         </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 
 

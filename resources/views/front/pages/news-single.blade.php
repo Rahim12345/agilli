@@ -74,11 +74,11 @@
                         <div class="col-lg-6 share">
                             <span class="bold">Share on: </span>
                             <ul>
-                                <li><a href="#0">Facebook</a></li>
-                                <li><a href="#0">Twitter</a> </li>
-                                <li><a href="#0">Pinterest</a> </li>
-                                <li><a href="#0">Linkedin</a> </li>
-                                <li><a href="#0">Copy Link</a></li>
+                                <li><a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}">Facebook</a></li>
+                                <li><a class="tw twitPop" href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}">Twitter</a> </li>
+{{--                                <li><a href="#0">Pinterest</a> </li>--}}
+                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(request()->fullUrl()) }}&title={{ $news->{'title_'.app()->getLocale()} }}" onclick="window.open(this.href, '{{ $news->{'title_'.app()->getLocale()} }}', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">Linkedin</a> </li>
+                                <li><a href="#0" onclick="copyToClipboard('{!! request()->fullUrl() !!}')">Copy Link</a></li>
                             </ul>
                         </div>
                     </div>
@@ -116,5 +116,43 @@
 
 
 @section('js')
+    <script>
+        function printDiv(printableArea) {
+            w=window.open();
+            w.document.write($('.myContent').html());
+            w.print();
+        }
+        $(document).ready(function() {
+            $('.fb-share').click(function(e) {
+                e.preventDefault();
+                window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                return false;
+            });
+        });
 
+        $('.twitPop').click(function(event) {
+            var width  = 575,
+                height = 400,
+                left   = ($(window).width()  - width)  / 2,
+                top    = ($(window).height() - height) / 2,
+                url    = this.href,
+                opts   = 'status=1' +
+                    ',width='  + width  +
+                    ',height=' + height +
+                    ',top='    + top    +
+                    ',left='   + left;
+            window.open(url, 'twitter', opts);
+            return false;
+        });
+
+        function copyToClipboard(text) {
+            var sampleTextarea = document.createElement("textarea");
+            document.body.appendChild(sampleTextarea);
+            sampleTextarea.value = text;
+            sampleTextarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(sampleTextarea);
+            toastr.success(text,'Copied');
+        }
+    </script>
 @endsection

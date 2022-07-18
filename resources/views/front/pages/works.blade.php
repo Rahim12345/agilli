@@ -30,49 +30,23 @@
                 <div class="col-xs-2 col-lg-2 col-md-12 col-sm-12">
                     <div class="menu">
                         <div class="works-button">
-                            <button class="filter__item __js_filter-btn filter__item--active" type="button" data-filter="*">ALL</button>
-                            <button class="filter__item __js_filter-btn" type="button" data-filter=".__js_socialopenpage">Social openpage</button>
-                            <button class="filter__item __js_filter-btn" type="button" data-filter=".__js_tvc">TVC</button>
-                            <button class="filter__item __js_filter-btn" type="button" data-filter=".__js_print">Print</button>
-                            <button class="filter__item __js_filter-btn" type="button" data-filter=".__js_digital">Digital</button>
+                            <button class="filter__item __js_filter-btn filter__item--active" type="button" data-filter="*" data-id="0">ALL</button>
+                            @foreach($categories as $category)
+                            <button class="filter__item __js_filter-btn" type="button" data-filter=".__js_{{ str_slug($category->{'name_'.app()->getLocale()}) }}" data-id="{{ $category->id }}">{{ $category->{'name_'.app()->getLocale()} }}</button>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="portfolio_gallery tab col-xs-10 col-lg-10 col-md-12 col-sm-12">
-                    <div class="__js_projects-grid ">
-                        <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_socialopenpage" onclick="openpage('work.html')" >
-                            <div class="image">
-                                <img src="img/works/works1.png">
-                            </div>
-                        </div>
-                        <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_tvc">
-                            <div class="image">
-                                <img src="img/works/works2.png">
-                            </div>
-                        </div>
-                        <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_print">
-                            <div class="image">
-                                <img src="img/works/works3.png">
-                            </div>
-                        </div>
-                        <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_socialopenpage">
-                            <div class="image">
-                                <img src="img/works/works4.png">
-                            </div>
-                        </div>
-                        <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_digital">
-                            <div class="image">
-                                <img src="img/works/works5.png">
-                            </div>
-                        </div>
-                        <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_tvc">
-                            <div class="image">
-                                <img src="img/works/works6.png">
-                            </div>
-                        </div>
-                    </div>
+                    <div class="__js_projects-grid2 d-flex flex-wrap" id="load_data"></div>
                     <div class="more">
-                        <a href="javascript:(0)">LOAD MORE</a>
+                        <div id="load_data_message" style="display:none">
+                            <button id="showMore2"  class="showMore-btn d-flex loading">
+                                <div class="loadings"></div>
+                            </button>
+                        </div>
+
+                        <a href="javascript:(0)" id="showMore">LOAD MORE</a>
                     </div>
                 </div>
 
@@ -84,5 +58,86 @@
 
 
 @section('js')
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+            var category_id   = $('.filter__item--active').attr('data-id');
+            var limit       = 2;
+            var start       = 0;
+            var action      = 'inactive';
+
+            $('.__js_filter-btn').click(function () {
+                $('#showMore').css('display','none');
+                category_id   = $(this).attr('data-id');
+                limit       = 2;
+                start       = 0;
+                action      = 'inactive';
+                $('#load_data').html('');
+                load_data(limit, start,category_id);
+            });
+
+            function load_data(limit, start,category_id = 0)
+            {
+                $('#load_data_message').css("display","block");
+                $.ajax({
+                    url:"{!! route('front.works.post') !!}",
+                    method:"POST",
+                    data:{limit:limit, start:start, category_id: category_id},
+                    cache:false,
+
+                    success:function(data)
+                    {
+                        $('#load_data_message').css("display","none");
+                        $('#load_data').append(data);
+
+                        if(data == '')
+                        {
+                            // $('#load_data_message').html("<button type='button' class='showMore-btn'>Məlumat tapılmadı</button>");
+                            $('#showMore').css('display','none');
+                            action = 'active';
+                        }
+                        else
+                        {
+                            $('#showMore').css('display','block');
+                            action = "inactive";
+
+                        }
+                    }
+                });
+            }
+
+            if(action == 'inactive')
+            {
+                action = 'active';
+                load_data(limit, start, category_id);
+            }
+
+            $('#showMore').click(function(){
+                $('#showMore').css('display','none');
+                $('#load_data_message').css("display","block");
+                action  = 'active';
+                start   = start + limit;
+                setTimeout(function(){
+                    load_data(limit, start, category_id);
+                }, 1000);
+            });
+
+            // $(window).scroll(function(){
+            //     if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive')
+            //     {
+            //         action = 'active';
+            //         start = start + limit;
+            //         setTimeout(function(){
+            //             load_data(limit, start, category_id);
+            //         }, 1000);
+            //     }
+            // });
+
+        });
+    </script>
 @endsection

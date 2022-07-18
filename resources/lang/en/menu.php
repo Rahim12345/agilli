@@ -6,4 +6,6 @@ return [
     'works'=>'Works',
     'news'=>'News',
     'contact'=>'Contact',
+    'load_more'=>'LOAD MORE',
+    'main_news'=>'MAIN INNOVATIONS'
 ];

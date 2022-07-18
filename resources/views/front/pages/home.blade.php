@@ -82,40 +82,7 @@
 
     <!-- NEWS ==================================== -->
     <section class="news">
-        <div class="container-fluid">
-            <div class="title wow"  data-aos="fade-right" data-aos-duration="1200" data-wow-delay=".4s">YENİ</div>
-            <div class="row">
-                <div class="col-lg-2 left" data-aos="zoom-in" data-aos-duration="1200" data-wow-delay=".4s">
-                    <h2>ƏSAS YENİLİKLƏR</span>
-                </div>
-                <div class="col-lg-4 col-md-6 box  wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".3s" onclick="openpage('news-detail.html')" >
-                    <div class="image">
-                        <img src="{{ asset('a-n') }}/img/global/news/news1.png" alt="">
-                        <div class="content">
-                            <h2>Reamon del teromsaw</h2>
-                            <span>Today 20:34</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 box wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".5s" onclick="openpage('news-detail.html')" >
-                    <div class="image">
-                        <img src="{{ asset('a-n') }}/img/global/news/news2.png" alt="">
-                        <div class="content">
-                            <h2>Warona somena desozien goen</h2>
-                            <span>Today 20:34</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 right" onclick="openpage('news.html')" data-aos="fade-left" data-aos-duration="1200" data-wow-delay=".4s">
-                    <h2>Dİgər xəbərlər</h2>
-                    <div class="right-btn">
-                        <button type="button" class="btn btn-next">
-                            <img src="{{ asset('a-n') }}/img/global/news/arrow-right.png" alt="">
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('front.includes.last_news')
     </section>
 </main>
 @endsection

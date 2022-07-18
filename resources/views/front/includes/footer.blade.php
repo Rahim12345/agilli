@@ -88,6 +88,7 @@
         once:true,
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 @yield('js')
 </body>
 </html>

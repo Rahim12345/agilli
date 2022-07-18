@@ -32,7 +32,7 @@
                     <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="news_gallery" id="load_data"></div>
                         <div class="more">
-                            <a href="javascript:(0)" id="loadMore">LOAD MORE</a>
+                            <a href="javascript:(0)" id="loadMore">{{ __('menu.load_more') }}</a>
                         </div>
                         {{--  <div id="load_data_message"></div>  --}}
                     </div>
