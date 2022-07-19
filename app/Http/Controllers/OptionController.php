@@ -126,6 +126,8 @@ class OptionController extends Controller
     {
         return view('back.pages.home.home-banner',[
             'home_banner_src'=>Options::getOption('home_banner_src'),
+            'home_banner_src_alt_az'=>Options::getOption('home_banner_src_alt_az'),
+            'home_banner_src_alt_en'=>Options::getOption('home_banner_src_alt_en'),
             'home_banner_text_az'=>Options::getOption('home_banner_text_az'),
             'home_banner_text_en'=>Options::getOption('home_banner_text_en'),
             'home_banner_button_text_az'=>Options::getOption('home_banner_button_text_az'),
@@ -370,6 +372,8 @@ class OptionController extends Controller
     {
         return view('back.pages.project.project-banner',[
             'project_banner_src'=>Options::getOption('project_banner_src'),
+            'project_banner_src_alt_az'=>Options::getOption('project_banner_src_alt_az'),
+            'project_banner_src_alt_en'=>Options::getOption('project_banner_src_alt_en'),
             'project_banner_button_text_az'=>Options::getOption('project_banner_button_text_az'),
             'project_banner_button_text_en'=>Options::getOption('project_banner_button_text_en'),
             'project_banner_link'=>Options::getOption('project_banner_link')
@@ -425,6 +429,8 @@ class OptionController extends Controller
     {
         return view('back.pages.news.news-banner',[
             'news_banner_src'=>Options::getOption('news_banner_src'),
+            'news_banner_src_alt_az'=>Options::getOption('news_banner_src_alt_az'),
+            'news_banner_src_alt_en'=>Options::getOption('news_banner_src_alt_en'),
             'news_banner_button_text_az'=>Options::getOption('news_banner_button_text_az'),
             'news_banner_button_text_en'=>Options::getOption('news_banner_button_text_en'),
             'news_banner_link'=>Options::getOption('news_banner_link')

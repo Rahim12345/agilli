@@ -48,6 +48,8 @@ class ProjectController extends Controller
         $project = Project::create([
             'cover'=>$cover,
             'category_id'=>$request->category_id,
+            'alt_az'=>$request->alt_az,
+            'alt_en'=>$request->alt_en,
             'title_1_az'=>$request->title_1_az,
             'title_1_en'=>$request->title_1_en,
             'title_2_az'=>$request->title_2_az,
@@ -120,6 +122,8 @@ class ProjectController extends Controller
         $project->update([
             'cover'=>$cover,
             'category_id'=>$request->category_id,
+            'alt_az'=>$request->alt_az,
+            'alt_en'=>$request->alt_en,
             'title_1_az'=>$request->title_1_az,
             'title_1_en'=>$request->title_1_en,
             'title_2_az'=>$request->title_2_az,

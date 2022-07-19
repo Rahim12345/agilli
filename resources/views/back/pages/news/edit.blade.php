@@ -33,6 +33,22 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="cover_alt_az">Alt(AZ)</label>
+                                <input type="text" class="form-control @error('cover_alt_az') is-invalid  @enderror" id="cover_alt_az" name="cover_alt_az" value="{{ old('cover_alt_az',$news->cover_alt_az) }}">
+                                @error('cover_alt_az')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="cover_alt_en">Alt(EN)</label>
+                                <input type="text" class="form-control @error('cover_alt_en') is-invalid  @enderror" id="cover_alt_en" name="cover_alt_en" value="{{ old('cover_alt_en',$news->cover_alt_en) }}">
+                                @error('cover_alt_en')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="form-group mb-3 col-md-6">
                                 <label class="form-label" for="title_az">Title (AZ)</label>
                                 <input type="text" class="form-control @error('title_az') is-invalid  @enderror" id="title_az" name="title_az" value="{{ old('title_az',$news->title_az) }}">
@@ -111,6 +127,21 @@
                             </div>
 
                             <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="image_1_alt_az">Alt(AZ)</label>
+                                <input type="text" class="form-control @error('image_1_alt_az') is-invalid  @enderror" id="image_1_alt_az" name="image_1_alt_az" value="{{ old('image_1_alt_az',$news->image_1_alt_az) }}">
+                                @error('image_1_alt_az')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="image_1_alt_en">Alt(EN)</label>
+                                <input type="text" class="form-control @error('image_1_alt_en') is-invalid  @enderror" id="image_1_alt_en" name="image_1_alt_en" value="{{ old('image_1_alt_en',$news->image_1_alt_en) }}">
+                                @error('image_1_alt_en')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3 col-md-6">
                                 <label class="form-label" for="text_2_az">Text 2 (AZ)</label>
                                 <textarea name="text_2_az" id="text_2_az" cols="30" rows="4" class="form-control @error('text_2_az') is-invalid  @enderror">{{ old('text_2_az',$news->text_2_az) }}</textarea>
                                 @error('text_2_az')
@@ -135,6 +166,21 @@
                                 <label class="form-label" for="image_2">Image 2</label>
                                 <input type="file" class="form-control @error('image_2') is-invalid  @enderror" id="image_2" name="image_2">
                                 @error('image_2')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="image_1_alt_az">Alt(AZ)</label>
+                                <input type="text" class="form-control @error('image_2_alt_az') is-invalid  @enderror" id="image_2_alt_az" name="image_2_alt_az" value="{{ old('image_2_alt_az',$news->image_2_alt_az) }}">
+                                @error('image_2_alt_az')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="image_1_alt_en">Alt(EN)</label>
+                                <input type="text" class="form-control @error('image_2_alt_en') is-invalid  @enderror" id="image_2_alt_en" name="image_2_alt_en" value="{{ old('image_2_alt_en',$news->image_2_alt_en) }}">
+                                @error('image_2_alt_en')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

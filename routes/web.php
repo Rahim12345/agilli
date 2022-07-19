@@ -60,6 +60,7 @@ Route::post('profile',[ profileController::class,'profileUpdate' ])
         Route::get('/contact',[PagesController::class,'contact'])->name('front.contact');
         Route::post('/contact',[PagesController::class,'contactPost'])->name('front.contact.post');
 
+        Route::get('/test',[PagesController::class,'test'])->name('front.test');
     });
 
 Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
@@ -91,6 +92,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
 
     Route::resource('partnyorlar', PartnyorImageController::class);
 
+    Route::post('partner-alt', [PartnyorImageController::class,'partnerAlt'])
+        ->name('partner.alt');
+
     Route::get('about-banner',[OptionController::class,'aboutBanner'])
         ->name('about.banner');
 
@@ -107,6 +111,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
 
     Route::resource('project', ProjectController::class);
     Route::resource('project-images', ProjectImageController::class);
+
+    Route::post('project-image-alt', [ProjectImageController::class,'projectImageAlt'])
+        ->name('project.image.alt');
 
     Route::get('news-banner',[OptionController::class,'newsBanner'])
         ->name('news.banner');

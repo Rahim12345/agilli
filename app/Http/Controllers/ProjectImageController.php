@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectImageRequest;
 use App\Http\Requests\UpdateProjectImageRequest;
 use App\Traits\FileUploader;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProjectImageController extends Controller
 {
@@ -109,5 +110,18 @@ class ProjectImageController extends Controller
         toastr()->success('Data uğurla silindi');
 
         return redirect()->back();
+    }
+
+    public function projectImageAlt(Request $request)
+    {
+        $this->validate($request,[
+            'id'=>'required|exists:partnyor_images,id',
+            'action'=>['required',Rule::in(['alt_az','alt_en'])]
+        ]);
+
+        $image = ProjectImage::findOrFail($request->id);
+        $image->update([
+            $request->action=>$request->text
+        ]);
     }
 }

@@ -149,6 +149,7 @@
                         'about-banner',
                         'project-banner',
                         'news-banner',
+                        'news',
                         'category'
                     ]))
                         show
@@ -161,6 +162,7 @@
                         'about-banner',
                         'project-banner',
                         'news-banner',
+                        'news',
                         'category'
                     ]))
                         true
@@ -202,6 +204,7 @@
                             'project-banner',
                             'news-banner',
                             'category',
+                            'news',
                             'project',
                         ]))
                             show

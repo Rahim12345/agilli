@@ -17,6 +17,8 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('cover')->nullable();
+            $table->string('cover_alt_az')->nullable();
+            $table->string('cover_alt_en')->nullable();
             $table->string('title_az')->nullable();
             $table->string('title_en')->nullable();
             $table->string('author_az')->nullable();
@@ -26,9 +28,13 @@ class CreateNewsTable extends Migration
             $table->text('text_1_az')->nullable();
             $table->text('text_1_en')->nullable();
             $table->string('image_1')->nullable();
+            $table->string('image_1_alt_az')->nullable();
+            $table->string('image_1_alt_en')->nullable();
             $table->text('text_2_az')->nullable();
             $table->text('text_2_en')->nullable();
             $table->string('image_2')->nullable();
+            $table->string('image_2_alt_az')->nullable();
+            $table->string('image_2_alt_en')->nullable();
             $table->timestamps();
         });
     }

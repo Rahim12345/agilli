@@ -45,6 +45,12 @@ class NewsController extends Controller
         $image_2    = $this->fileUpdate($request->image_2, $request->hasFile('image_2'), $request->image_2, 'files/news-images/');
         $news = News::create([
             'cover'=>$cover,
+            'cover_alt_az'=>$request->cover_alt_az,
+            'cover_alt_en'=>$request->cover_alt_en,
+            'image_1_alt_az'=>$request->image_1_alt_az,
+            'image_1_alt_en'=>$request->image_1_alt_en,
+            'image_2_alt_az'=>$request->image_2_alt_az,
+            'image_2_alt_en'=>$request->image_2_alt_en,
             'title_az'=>$request->title_az,
             'title_en'=>$request->title_en,
             'author_az'=>$request->author_az,
@@ -100,6 +106,12 @@ class NewsController extends Controller
 
         $news->update([
             'cover'=>$cover,
+            'cover_alt_az'=>$request->cover_alt_az,
+            'cover_alt_en'=>$request->cover_alt_en,
+            'image_1_alt_az'=>$request->image_1_alt_az,
+            'image_1_alt_en'=>$request->image_1_alt_en,
+            'image_2_alt_az'=>$request->image_2_alt_az,
+            'image_2_alt_en'=>$request->image_2_alt_en,
             'title_az'=>$request->title_az,
             'title_en'=>$request->title_en,
             'author_az'=>$request->author_az,

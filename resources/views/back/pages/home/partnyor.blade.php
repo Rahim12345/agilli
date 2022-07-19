@@ -75,6 +75,8 @@
                         @foreach($images as $image)
                             <tr>
                                 <td><img src="{{ asset('files/partnyors/'.$image->src) }}" style="width: 100px;height: 100px" alt=""></td>
+                                <td><input type="text" placeholder="Alt(AZ)" value="{{ $image->alt_az }}" class="form-control" oninput="alter({{ $image->id }}, 'alt_az', this.value)"></td>
+                                <td><input type="text" placeholder="Alt(EN)" value="{{ $image->alt_en }}" class="form-control" oninput="alter({{ $image->id }}, 'alt_en', this.value)"></td>
                                 <td>
                                     <form action="{{ route('partnyorlar.destroy',$image->id) }}" method="POST">
                                         @csrf
@@ -92,5 +94,31 @@
 @endsection
 
 @section('js')
+    <script>
+        function alter(id, action, text) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+            $.ajax({
+                type : 'POST',
+                data : {
+                    id,
+                    action,
+                    text
+                },
+                url  : '{!! route('partner.alt') !!}',
+                success :  function (response) {
+                    // toastr.success(response);
+                },
+                error : function (myErrors) {
+                    $.each(myErrors.responseJSON.errors, function (key, error) {
+                        toastr.error(error);
+                    })
+                }
+            });
+        }
+    </script>
 @endsection

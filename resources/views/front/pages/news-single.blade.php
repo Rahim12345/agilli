@@ -39,7 +39,7 @@
 
                         <div class="col-lg-12">
                             <div class="image">
-                                <img src="{!! asset('files/news-images/'.$news->image_1) !!}" alt="">
+                                <img src="{!! asset('files/news-images/'.$news->image_1) !!}" alt="{{ $news->{'image_1_alt_'.app()->getLocale()} }}">
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -51,7 +51,7 @@
 
                     <div class="col-lg-12 p-0">
                         <div class="image-banner">
-                            <img src="{!! asset('files/news-images/'.$news->image_2) !!}" alt="">
+                            <img src="{!! asset('files/news-images/'.$news->image_2) !!}" alt="{{ $news->{'image_2_alt_'.app()->getLocale()} }}">
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-lg-8 box">
                         <div class="image">
-                            <img src="{!! asset('files/news-banner/'.$previous->cover) !!}" alt="">
+                            <img src="{!! asset('files/news-banner/'.$previous->cover) !!}" alt="{{ $previous->{'cover_alt_'.app()->getLocale()} }}">
                             <div class="content">
                                 <h3>{!! $news->{'title_'.app()->getLocale()} !!}</h3>
                             </div>

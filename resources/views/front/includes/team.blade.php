@@ -16,7 +16,7 @@
         <div class="team_right owl-carousel owl-theme owl-loaded owl-drag">
             @foreach ($teams as $team)
             <div class="item" data-aos="zoom-in" data-aos-duration="1000" >
-                <img src="{{ asset('files/partnyors/'.$team->src) }}" alt="">
+                <img src="{{ asset('files/partnyors/'.$team->src) }}" alt="{{ $team->{'alt_'.app()->getLocale()} }}">
             </div>
             @endforeach
         </div>

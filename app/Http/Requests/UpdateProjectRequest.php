@@ -26,6 +26,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'cover'=>'nullable|image',
             'category_id'=>'required|exists:categories,id',
+            'alt_az'=>'nullable|max:255',
+            'alt_en'=>'nullable|max:255',
             'title_1_az'=>'nullable|max:255',
             'title_1_en'=>'nullable|max:255',
             'title_2_az'=>'nullable|max:255',

@@ -55,14 +55,14 @@
                             </div>
                         </div>
                         <div class="inner-image col-lg-8">
-                            <img src="{{ asset('files/project-banner/'.$previous->cover) }}" alt="">
+                            <img src="{{ asset('files/project-banner/'.$previous->cover) }}" alt="{{ $previous->{'alt_'.app()->getLocale()} }}">
                         </div>
                         @endif
                     </div>
                     @foreach($project->images as $image)
                         <div class="{{ $image->col_12 ? 'full-images' : 'resize-images' }}">
                             <div class="inner-image col-lg-{{ $image->col_12 ? 12 : 8 }}">
-                                <img src="{{ asset('files/project-images/'.$image->src) }}" alt="">
+                                <img src="{{ asset('files/project-images/'.$image->src) }}" alt="{{ $image->{'alt_'.app()->getLocale()} }}">
                             </div>
                         </div>
                     @endforeach
@@ -110,7 +110,7 @@
                     <div class="col-lg-12">
                         <div class="box">
                             <div class="image col-lg-8">
-                                <img src="{{ asset('files/project-banner/'.$next->cover) }}" alt="">
+                                <img src="{{ asset('files/project-banner/'.$next->cover) }}" alt="{{ $next->{'alt_'.app()->getLocale()} }}">
                                 <div class="content">
                                     <h3>{!! $next->{'title_1_'.app()->getLocale()} !!}</h3>
                                 </div>

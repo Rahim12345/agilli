@@ -16,6 +16,8 @@ class CreatePartnyorImagesTable extends Migration
         Schema::create('partnyor_images', function (Blueprint $table) {
             $table->id();
             $table->string('src')->nullable();
+            $table->string('alt_az')->nullable();
+            $table->string('alt_en')->nullable();
             $table->tinyInteger('type')->default(1)->comment('1 - partnyor, 2 - team');
             $table->integer('order_no')->default(0);
             $table->timestamps();

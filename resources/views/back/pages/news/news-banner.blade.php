@@ -27,6 +27,21 @@
                         </div>
 
                         <div class="form-group mb-3">
+                            <label class="form-label" for="news_banner_src_alt_az">Alt(AZ)</label>
+                            <input type="text" class="form-control @error('news_banner_src_alt_az') is-invalid  @enderror" id="news_banner_src_alt_az" name="news_banner_src_alt_az" value="{{ old('news_banner_src_alt_az',$news_banner_src_alt_az) }}">
+                            @error('news_banner_src_alt_az')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="news_banner_src_alt_en">Alt(EN)</label>
+                            <input type="text" class="form-control @error('news_banner_src_alt_en') is-invalid  @enderror" id="news_banner_src_alt_en" name="news_banner_src_alt_en" value="{{ old('news_banner_src_alt_en',$news_banner_src_alt_en) }}">
+                            @error('news_banner_src_alt_en')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
                             <label class="form-label" for="news_banner_button_text_az">Button(AZ)</label>
                             <input type="text" class="form-control @error('news_banner_button_text_az') is-invalid  @enderror" id="news_banner_button_text_az" name="news_banner_button_text_az" value="{{ old('news_banner_button_text_az',$news_banner_button_text_az) }}">
                             @error('news_banner_button_text_az')

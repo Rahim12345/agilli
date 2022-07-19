@@ -6,6 +6,8 @@ use App\Models\PartnyorImage;
 use App\Http\Requests\StorePartnyorImageRequest;
 use App\Http\Requests\UpdatePartnyorImageRequest;
 use App\Traits\FileUploader;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PartnyorImageController extends Controller
 {
@@ -98,5 +100,24 @@ class PartnyorImageController extends Controller
         toastr()->success('Data uğurla silindi');
 
         return redirect()->back();
+    }
+
+    public function partnerAlt(Request $request)
+    {
+        $this->validate($request,[
+            'id'=>'required|exists:partnyor_images,id',
+            'action'=>['required',Rule::in(['alt_az','alt_en'])]
+        ]);
+
+        $image = PartnyorImage::findOrFail($request->id);
+        $image->update([
+            $request->action=>$request->text
+        ]);
+
+    }
+
+    public function projectImageAlt(Request $request)
+    {
+        
     }
 }

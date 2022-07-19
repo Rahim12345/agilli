@@ -27,6 +27,21 @@
                         </div>
 
                         <div class="form-group mb-3">
+                            <label class="form-label" for="project_banner_src_alt_az">Alt(AZ)</label>
+                            <input type="text" class="form-control @error('project_banner_src_alt_az') is-invalid  @enderror" id="project_banner_src_alt_az" name="project_banner_src_alt_az" value="{{ old('project_banner_src_alt_az',$project_banner_src_alt_az) }}">
+                            @error('project_banner_src_alt_az')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="project_banner_src_alt_en">Alt(EN)</label>
+                            <input type="text" class="form-control @error('project_banner_src_alt_en') is-invalid  @enderror" id="project_banner_src_alt_en" name="project_banner_src_alt_en" value="{{ old('project_banner_src_alt_en',$project_banner_src_alt_en) }}">
+                            @error('project_banner_src_alt_en')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
                             <label class="form-label" for="project_banner_button_text_az">Button(AZ)</label>
                             <input type="text" class="form-control @error('project_banner_button_text_az') is-invalid  @enderror" id="project_banner_button_text_az" name="project_banner_button_text_az" value="{{ old('project_banner_button_text_az',$project_banner_button_text_az) }}">
                             @error('project_banner_button_text_az')

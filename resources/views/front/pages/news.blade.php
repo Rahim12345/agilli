@@ -13,7 +13,7 @@
         <!-- BANNER ==================================== -->
         <section class="banner">
             <img src="{{ asset('files/news-banner/' . \App\Helpers\Options::getOption('news_banner_src')) }}" class="d-none"
-                alt="">
+                alt="{{ \App\Helpers\Options::getOption('news_banner_src_alt_'.app()->getLocale()) }}">
             <div class="container-fluid">
                 <div class="row">
                     <div class="image">

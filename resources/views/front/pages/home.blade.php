@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-lg-7 picture wow animate__animated animate__fadeInRight animate__slow" data-wow-delay=".3s">
                     <div class="imag">
-                        <img src="{{ asset('files/home-banner/'.\App\Helpers\Options::getOption('home_banner_src')) }}" alt="">
+                        <img src="{{ asset('files/home-banner/'.\App\Helpers\Options::getOption('home_banner_src')) }}" alt="{{ \App\Helpers\Options::getOption('home_banner_src_alt_'.app()->getLocale()) }}">
                     </div>
                     <div class="video upvideo"><a href="{!! \App\Helpers\Options::getOption('home_banner_link') !!}"><i class="fa-solid fa-play"></i><span>{!! \App\Helpers\Options::getOption('home_banner_button_text_'.app()->getLocale()) !!}</span></a></div>
                 </div>
@@ -39,7 +39,7 @@
                 @foreach($last_projects as $last_project)
                 <div class="col-lg-4 col-md-6 box  wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".3s"  onclick="openpage('{!! route('front.works.single',['id'=>$last_project->id]) !!}')">
                     <div class="image">
-                        <img src="{{ asset('files/project-banner/'.$last_project->cover) }}" alt="">
+                        <img src="{{ asset('files/project-banner/'.$last_project->cover) }}" alt="{{ $last_project->{'alt_'.app()->getLocale()} }}">
                         <div class="content fadeIn-bottom">
                             <h2>{!! $last_project->{'title_1_'.app()->getLocale()} !!}</h2>
                         </div>

@@ -13,7 +13,7 @@
                         <div class="item">
                             <div class="inside_item">
                                 <div >
-                                    <img  src="{{ asset('files/partnyors/'.$partner->src) }}" alt="Some Moments">
+                                    <img  src="{{ asset('files/partnyors/'.$partner->src) }}" alt="{{ $partner->{'alt_'.app()->getLocale()} }}">
                                 </div>
                             </div>
                         </div>

@@ -25,6 +25,23 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="alt_az">Alt(AZ)</label>
+                                <input type="text" class="form-control @error('alt_az') is-invalid  @enderror" id="alt_az" name="alt_az" value="{{ old('alt_az') }}">
+                                @error('alt_az')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="alt_en">Alt(EN)</label>
+                                <input type="text" class="form-control @error('alt_en') is-invalid  @enderror" id="alt_en" name="alt_en" value="{{ old('alt_en') }}">
+                                @error('alt_en')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="form-group mb-3 col-md-12">
                                 <label class="form-label" for="category_id">Category</label>
                                 <select name="category_id" id="category_id"  class="form-control @error('category_id') is-invalid  @enderror">

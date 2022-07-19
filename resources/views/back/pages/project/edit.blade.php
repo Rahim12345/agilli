@@ -44,7 +44,21 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="alt_az">Alt(AZ)</label>
+                                <input type="text" class="form-control @error('alt_az') is-invalid  @enderror" id="alt_az" name="alt_az" value="{{ old('alt_az',$project->alt_az) }}">
+                                @error('alt_az')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="alt_en">Alt(EN)</label>
+                                <input type="text" class="form-control @error('alt_en') is-invalid  @enderror" id="alt_en" name="alt_en" value="{{ old('alt_en',$project->alt_en) }}">
+                                @error('alt_en')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <div class="form-group mb-3 col-md-12">
                                 <label class="form-label" for="category_id">Category</label>
                                 <select name="category_id" id="category_id"  class="form-control @error('category_id') is-invalid  @enderror">
@@ -233,30 +247,7 @@
                     <div class="row">
                         <table class="table table-bordered">
                             <tbody style="cursor: all-scroll;">
-                                {{-- @foreach ($project->images as $image)
-                                    <tr>
-                                        <td>
-                                            <img src="{{ asset('files/project-images/' . $image->src) }}"
-                                                style="width: 200px" alt="">
-                                        </td>
-                                        <td>
-                                            <div class="btn-list flex-nowrap">
-                                                <a href="{{ route('project-images.edit', $image->id) }}"
-                                                    class="btn btn-primary">{{ $image->col_12 == 0 ? 'col-12 et' : 'col-8 et' }}</a>
-                                                <div>
-                                                    <form action="{{ route('project-images.destroy', $image->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger"
-                                                            onclick="return confirm('Are you sure to delete this?')"><i
-                                                                class="fa fa-times"></i></button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
+
                             </tbody>
                         </table>
                     </div>
@@ -292,7 +283,10 @@
                             html += '<tr id="' + data[count].id + '">';
                             html += `<td><img src="/files/project-images/`+data[count].src+`"
                             style = "width: 200px"  alt = "" >`;
-                            html += `<td>
+                            html += `
+                            <td><input type="text" placeholder="Alt(AZ)" value="`+(data[count].alt_az ? data[count].alt_az : '')+`" class="form-control" oninput="alter(`+data[count].id+`, 'alt_az', this.value)"></td>
+                            <td><input type="text" placeholder="Alt(EN)" value="`+(data[count].alt_en ? data[count].alt_en : '')+`" class="form-control" oninput="alter(`+data[count].id+`, 'alt_en', this.value)"></td>
+                            <td>
                                 <div class="btn-list flex-nowrap">
                                     <a href="/admin/project-images/`+data[count].id+`/edit"
                                         class="btn btn-primary">`+ (data[count].col_12 == 0 ? `col-12 et` : `col-8 et`) +`</a>
@@ -341,5 +335,33 @@
             });
 
         });
+    </script>
+
+    <script>
+        function alter(id, action, text) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type : 'POST',
+                data : {
+                    id,
+                    action,
+                    text
+                },
+                url  : '{!! route('project.image.alt') !!}',
+                success :  function (response) {
+                    // toastr.success(response);
+                },
+                error : function (myErrors) {
+                    $.each(myErrors.responseJSON.errors, function (key, error) {
+                        toastr.error(error);
+                    })
+                }
+            });
+        }
     </script>
 @endsection

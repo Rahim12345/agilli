@@ -26,6 +26,20 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3">
+                            <label class="form-label" for="home_banner_src_alt_az">Alt(AZ)</label>
+                            <input type="text" class="form-control @error('home_banner_src_alt_az') is-invalid  @enderror" id="home_banner_src_alt_az" name="home_banner_src_alt_az" value="{{ old('home_banner_src_alt_az',$home_banner_src_alt_az) }}">
+                            @error('home_banner_src_alt_az')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="home_banner_src_alt_en">Alt(EN)</label>
+                            <input type="text" class="form-control @error('home_banner_src_alt_en') is-invalid  @enderror" id="home_banner_src_alt_en" name="home_banner_src_alt_en" value="{{ old('home_banner_src_alt_en',$home_banner_src_alt_en) }}">
+                            @error('home_banner_src_alt_en')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
                             <label class="form-label" for="home_banner_text_az">Text(AZ)</label>
                             <textarea name="home_banner_text_az" class="form-control @error('home_banner_text_az') is-invalid  @enderror" id="home_banner_text_az" cols="30" rows="4">{{ old('home_banner_text_az',$home_banner_text_az) }}</textarea>
                             @error('home_banner_text_az')

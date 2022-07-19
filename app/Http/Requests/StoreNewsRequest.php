@@ -25,6 +25,12 @@ class StoreNewsRequest extends FormRequest
     {
         return [
             'cover'=>'nullable|image',
+            'cover_alt_az'=>'nullable|max:255',
+            'cover_alt_en'=>'nullable|max:255',
+            'image_1_alt_az'=>'nullable|max:255',
+            'image_1_alt_en'=>'nullable|max:255',
+            'image_2_alt_az'=>'nullable|max:255',
+            'image_2_alt_en'=>'nullable|max:255',
             'title_az'=>'nullable|max:255',
             'title_en'=>'nullable|max:255',
             'author_az'=>'nullable|max:255',
