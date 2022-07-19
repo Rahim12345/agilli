@@ -34,28 +34,21 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2 left wow animate__animated animate__zoomIn animate__slow" data-wow-delay=".3s">
-                    <h2>YENİ LAYİHƏLƏR</span>
+                    <h2>{!! __('menu.yeni_layiheler') !!}</h2>
                 </div>
-                <div class="col-lg-4 col-md-6 box  wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".3s"  onclick="openpage('work-detail.html')">
+                @foreach($last_projects as $last_project)
+                <div class="col-lg-4 col-md-6 box  wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".3s"  onclick="openpage('{!! route('front.works.single',['id'=>$last_project->id]) !!}')">
                     <div class="image">
-                        <img src="{{ asset('a-n') }}/img/global/work/work1.png" alt="">
+                        <img src="{{ asset('files/project-banner/'.$last_project->cover) }}" alt="">
                         <div class="content fadeIn-bottom">
-                            <h2>Ugh with the Old, in with the New</h2>
+                            <h2>{!! $last_project->{'title_1_'.app()->getLocale()} !!}</h2>
                         </div>
                     </div>
                     <div class="content-overlay"></div>
                 </div>
-                <div class="col-lg-4 col-md-6 box wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".5s"  onclick="openpage('work-detail.html')">
-                    <div class="image">
-                        <img src="{{ asset('a-n') }}/img/global/work/work2.png" alt="">
-                        <div class="content fadeIn-bottom">
-                            <h2>Ugh with the Old, in with the New</h2>
-                        </div>
-                    </div>
-                    <div class="content-overlay"></div>
-                </div>
-                <div class="col-lg-2 right wow animate__animated animate__zoomIn animate__slow" data-wow-delay=".3s" onclick="openpage('work.html')">
-                    <h2 >Digər Layİhələr</h2>
+                @endforeach
+                <div class="col-lg-2 right wow animate__animated animate__zoomIn animate__slow" data-wow-delay=".3s" onclick="openpage('{!! route('front.works') !!}')">
+                    <h2 >{{ __('menu.diger_layiheler') }}</h2>
                     <div class="right-btn">
                         <button type="button" class="btn btn-next">
                             <img src="{{ asset('a-n') }}/img/global/news/arrow-right.png" alt="">

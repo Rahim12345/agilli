@@ -48,9 +48,7 @@
                         <a href="#0"><img src="{{ asset('a-n') }}/img/header/logo.png" alt=""></a>
                     </div>
                     <div class="header-left-text">
-                        <span>ağıllı həllər təklif edən
-                            butik reklam agentliyi
-                        </span>
+                        <span>{!! __('menu.top_text') !!}</span>
                     </div>
                 </div>
                 <div class="header-right">

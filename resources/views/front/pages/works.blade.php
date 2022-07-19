@@ -46,7 +46,7 @@
                             </button>
                         </div>
 
-                        <a href="javascript:(0)" id="showMore">LOAD MORE</a>
+                        <a href="javascript:(0)" id="showMore">{{ __('menu.load_more') }}</a>
                     </div>
                 </div>
 
