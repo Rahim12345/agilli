@@ -16,8 +16,8 @@
             </div>
         @endforeach
         @if($next_news)
-            <div class="col-lg-2 right" onclick="openpage('{!! route('front.news.single',['id'=>$next_news->id]) !!}')" data-aos="fade-left" data-aos-duration="1200" data-wow-delay=".4s">
-                <h2>Dİgər xəbərlər</h2>
+            <div class="col-lg-2 right" onclick="openpage('{!! route('front.news') !!}')" data-aos="fade-left" data-aos-duration="1200" data-wow-delay=".4s">
+                <h2>{{ __('menu.diger_xeberler') }}</h2>
                 <div class="right-btn">
                     <button type="button" class="btn btn-next">
                         <img src="{{ asset('a-n/img/global/news/arrow-right.png') }}" alt="">

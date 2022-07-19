@@ -35,7 +35,7 @@
                     </div>
                     <div class="content fot-news">
                         <span><a href="{!! route('front.news') !!}">{{ __('menu.news') }}</a></span>
-                        <span><a href="contact.html">{{ __('menu.contact') }}</a></span>
+                        <span><a href="{!! route('front.contact') !!}">{{ __('menu.contact') }}</a></span>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6 inner">

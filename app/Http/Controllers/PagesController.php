@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\News;
 use App\Models\PartnyorImage;
 use App\Models\Project;
@@ -104,5 +105,25 @@ class PagesController extends Controller
 
         $previous = News::where('id', '<', $id)->orderBy('id','desc')->first();
         return view('front.pages.news-single', compact('news', 'previous'));
+    }
+
+    public function contact()
+    {
+        return view('front.pages.contact');
+    }
+
+    public function contactPost(Request $request)
+    {
+        $this->validate($request,[
+           'email'=>'required|email|unique:contacts,email'
+        ],[],[
+            'email'=>__('menu.email_adresiniz')
+        ]);
+
+        Contact::create([
+           'email'=>$request->email
+        ]);
+
+        return response(__('menu.subscribe_message'),'200');
     }
 }

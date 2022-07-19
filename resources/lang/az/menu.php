@@ -18,4 +18,9 @@ return [
     'top_text'=>'ağıllı həllər təklif edən butik reklam agentliyi',
     'yeni_layiheler'=>'YENİ LAYİHƏLƏR',
     'diger_layiheler'=>'Dİgər Layİhələr',
+    'diger_xeberler'=>'DİGƏR XƏBƏRLƏR',
+    'contact_text'=>'Biz ağlın sehrindən və nağılın gücündən yaranan hekayələrə inanırıq!',
+    'subscribe'=>'Xəbərlərə abunə olun',
+    'email_adresiniz'=>'Email adresiniz',
+    'subscribe_message'=>'Uğurla abunə oldunuz',
 ];

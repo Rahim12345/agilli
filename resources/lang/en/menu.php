@@ -18,4 +18,9 @@ return [
     'top_text'=>'a boutique advertising agency offering smart solutions',
     'yeni_layiheler'=>'NEW PROJECTS',
     'diger_layiheler'=>'Other Projects',
+    'diger_xeberler'=>'OTHER NEWS',
+    'contact_text'=>'We believe in stories born from the magic of the mind and the power of storytelling!',
+    'subscribe'=>'Subscribe for news',
+    'email_adresiniz'=>'Your email address',
+    'subscribe_message'=>'You have successfully subscribed',
 ];
