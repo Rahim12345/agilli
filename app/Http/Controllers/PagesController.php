@@ -56,7 +56,7 @@ class PagesController extends Controller
         foreach ($projects as $project)
         {
             $output .= '
-                <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_'.str_slug($project->category->{'name_'.app()->getLocale()}).'" onclick="openpage(\''.route('front.works.single',['id'=>$project->id]).'\')" >
+                <div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6 __js_masonry-item __js_'.str_slug($project->category->{'name_'.app()->getLocale()}).'" onclick="openpage(\''.route('front.works.single',['id'=>$project->id,'slug'=>$project->{'slug_'.app()->getLocale()}]).'\')" >
                     <div class="image">
                         <img src="'.asset('files/project-banner/'.$project->cover).'" alt="'.$project->{'alt_'.app()->getLocale()}.'">
                     </div>
@@ -67,7 +67,7 @@ class PagesController extends Controller
         return $output;
     }
 
-    public function worksSingle($id)
+    public function worksSingle($id,$slug = null)
     {
         $project    = Project::with('images')->findOrFail($id);
 
@@ -90,7 +90,7 @@ class PagesController extends Controller
 
             foreach($news as $new)
             {
-                $output .= '<div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6" onclick="openpage(\''.route('front.news.single',['id'=>$new->id]).'\')">
+                $output .= '<div class="box col-xl-6 col-lg-6 col-md-6 col-sm-6" onclick="openpage(\''.route('front.news.single',['id'=>$new->id,'slug'=>$new->{'slug_'.app()->getLocale()}]).'\')">
                     <div class="image">
                         <img src="'.asset('files/news-banner/'.$new->cover).'" alt="'.$new->{'cover_alt_'.app()->getLocale()}.'">
                     </div>
@@ -101,7 +101,7 @@ class PagesController extends Controller
         return $output;
     }
 
-    public function newsSingle($id)
+    public function newsSingle($id, $slug = null)
     {
         $news = News::findOrFail($id);
 

@@ -93,7 +93,7 @@
                     <div class="col-lg-2 left">
                         <h2>Əvvəlki xəbər</h2>
                         <div class="right-btn">
-                            <button type="button" class="btn btn-next" onclick="openpage('{!! route('front.news.single',['id'=>$previous->id]) !!}')">
+                            <button type="button" class="btn btn-next" onclick="openpage('{!! route('front.news.single',['id'=>$previous->id,'slug'=>$previous->{'slug_'.app()->getLocale()}]) !!}')">
                                 <img src="{{ asset('a-n/img/global/news/arrow-left.png') }}" alt="">
                             </button>
                         </div>

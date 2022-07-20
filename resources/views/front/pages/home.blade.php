@@ -37,7 +37,7 @@
                     <h2>{!! __('menu.yeni_layiheler') !!}</h2>
                 </div>
                 @foreach($last_projects as $last_project)
-                <div class="col-lg-4 col-md-6 box  wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".3s"  onclick="openpage('{!! route('front.works.single',['id'=>$last_project->id]) !!}')">
+                <div class="col-lg-4 col-md-6 box  wow animate__animated animate__fadeInUp animate__slow" data-wow-delay=".3s"  onclick="openpage('{!! route('front.works.single',['id'=>$last_project->id,'slug'=>$last_project->{'slug_'.app()->getLocale()}]) !!}')">
                     <div class="image">
                         <img src="{{ asset('files/project-banner/'.$last_project->cover) }}" alt="{{ $last_project->{'alt_'.app()->getLocale()} }}">
                         <div class="content fadeIn-bottom">

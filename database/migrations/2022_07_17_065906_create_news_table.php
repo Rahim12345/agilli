@@ -21,6 +21,8 @@ class CreateNewsTable extends Migration
             $table->string('cover_alt_en')->nullable();
             $table->string('title_az')->nullable();
             $table->string('title_en')->nullable();
+            $table->string('slug_az')->nullable();
+            $table->string('slug_en')->nullable();
             $table->string('author_az')->nullable();
             $table->string('author_en')->nullable();
             $table->string('release_date_az')->nullable();

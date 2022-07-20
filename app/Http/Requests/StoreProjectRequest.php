@@ -30,6 +30,8 @@ class StoreProjectRequest extends FormRequest
             'alt_en'=>'nullable|max:255',
             'title_1_az'=>'nullable|max:255',
             'title_1_en'=>'nullable|max:255',
+            'slug_az'=>'nullable|max:255',
+            'slug_en'=>'nullable|max:255',
             'title_2_az'=>'nullable|max:255',
             'title_2_en'=>'nullable|max:255',
             'text_az'=>'nullable|max:10000',

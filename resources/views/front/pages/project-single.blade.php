@@ -45,7 +45,7 @@
                     <div class="resize-images">
                         @if($previous)
                         <div class="back-project col-lg-2">
-                            <div class="text"  onclick="window.location.href='{!! route('front.works.single',['id'=>$previous->id]) !!}'">
+                            <div class="text"  onclick="window.location.href='{!! route('front.works.single',['id'=>$previous->id,'slug'=>$previous->{'slug_'.app()->getLocale()}]) !!}'">
                                 <span>{{ __('menu.back') }}</span>
                             </div>
                             <div class="arrow"  onclick="window.location.href='{!! route('front.works.single',['id'=>$previous->id]) !!}'">
@@ -115,7 +115,7 @@
                                     <h3>{!! $next->{'title_1_'.app()->getLocale()} !!}</h3>
                                 </div>
                             </div>
-                            <div class="left" onclick="window.location.href='{!! route('front.works.single',['id'=>$next->id]) !!}'">
+                            <div class="left" onclick="window.location.href='{!! route('front.works.single',['id'=>$next->id,'slug'=>$next->{'slug_'.app()->getLocale()}]) !!}'">
                                 <h2>{{ __('menu.next_project') }}</h2>
                                 <div class="right-btn">
                                     <button type="button" class="btn btn-next">

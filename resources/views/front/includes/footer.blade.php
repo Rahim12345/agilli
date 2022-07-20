@@ -6,7 +6,7 @@
                 <div class="col-lg-2 col-md-3 col-sm-6 inner fot-logo">
                     <div class="content logos">
                         <div class="imag not-responsive" onclick="openpage('{!! route('front.home') !!}')">
-                            <img src="{{ asset('a-n') }}//img/footer/footer-logo.png" alt="">
+                            <img src="{{ asset('a-n') }}/img/footer/footer-logo.png" alt="">
                         </div>
                         <span class="logo-text">
                             © {{ env('APP_NAME') }} {{ date('Y') }}

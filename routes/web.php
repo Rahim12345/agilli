@@ -51,11 +51,11 @@ Route::post('profile',[ profileController::class,'profileUpdate' ])
 
         Route::get('/works',[PagesController::class,'works'])->name('front.works');
         Route::post('/works',[PagesController::class,'worksPost'])->name('front.works.post');
-        Route::get('/works/{id}',[PagesController::class,'worksSingle'])->name('front.works.single');
+        Route::get('/works/{id}/{slug?}',[PagesController::class,'worksSingle'])->name('front.works.single');
 
         Route::get('/news',[PagesController::class,'news'])->name('front.news');
         Route::post('/news',[PagesController::class,'newsPost'])->name('front.news.post');
-        Route::get('/news/{id}',[PagesController::class,'newsSingle'])->name('front.news.single');
+        Route::get('/news/{id}/{slug?}',[PagesController::class,'newsSingle'])->name('front.news.single');
 
         Route::get('/contact',[PagesController::class,'contact'])->name('front.contact');
         Route::post('/contact',[PagesController::class,'contactPost'])->name('front.contact.post');

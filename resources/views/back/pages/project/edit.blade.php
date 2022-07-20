@@ -75,6 +75,7 @@
                             <div class="form-group mb-3 col-md-6">
                                 <label class="form-label" for="title_1_az">Title 1(AZ)</label>
                                 <input type="text" class="form-control @error('title_1_az') is-invalid @enderror"
+                                       onkeyup="convertToSlug(this.value,'slug_az')"
                                     id="title_1_az" name="title_1_az"
                                     value="{{ old('title_1_az', $project->title_1_az) }}">
                                 @error('title_1_az')
@@ -85,10 +86,31 @@
                             <div class="form-group mb-3 col-md-6">
                                 <label class="form-label" for="title_1_en">Title 1(EN)</label>
                                 <input type="text" class="form-control @error('title_1_en') is-invalid @enderror"
+                                       onkeyup="convertToSlug(this.value,'slug_en')"
                                     id="title_1_en" name="title_1_en"
                                     value="{{ old('title_1_en', $project->title_1_en) }}">
                                 @error('title_1_en')
                                     <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="slug_az">Slug (AZ)</label>
+                                <input type="text" class="form-control @error('slug_az') is-invalid @enderror"
+                                       id="slug_az" name="slug_az"
+                                       value="{{ old('slug_az', $project->slug_az) }}">
+                                @error('slug_az')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3 col-md-6">
+                                <label class="form-label" for="slug_en">Slug (EN)</label>
+                                <input type="text" class="form-control @error('slug_en') is-invalid @enderror"
+                                       id="slug_en" name="slug_en"
+                                       value="{{ old('slug_en', $project->slug_en) }}">
+                                @error('slug_en')
+                                <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -362,6 +384,22 @@
                     })
                 }
             });
+        }
+
+        function convertToSlug( str , id) {
+
+            //replace all special characters | symbols with a space
+            str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ')
+                .toLowerCase();
+
+            // trim spaces at start and end of string
+            str = str.replace(/^\s+|\s+$/gm,'');
+
+            // replace space with dash/hyphen
+            str = str.replace(/\s+/g, '-');
+            document.getElementById(id).value = str;
+            // $('#'+id).val(str);
+            // return str;
         }
     </script>
 @endsection

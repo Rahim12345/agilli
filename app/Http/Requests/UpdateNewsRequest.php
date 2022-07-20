@@ -33,6 +33,8 @@ class UpdateNewsRequest extends FormRequest
             'image_2_alt_en'=>'nullable|max:255',
             'title_az'=>'nullable|max:255',
             'title_en'=>'nullable|max:255',
+            'slug_az'=>'nullable|max:255',
+            'slug_en'=>'nullable|max:255',
             'author_az'=>'nullable|max:255',
             'author_en'=>'nullable|max:255',
             'release_date_az'=>'nullable|max:255',
