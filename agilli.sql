@@ -2,10 +2,10 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Hazırlanma Vaxtı: 19 İyul, 2022 saat 11:39
--- Server versiyası: 5.7.33
--- PHP Versiyası: 7.4.19
+-- Host: localhost:3306
+-- Generation Time: Jul 20, 2022 at 07:54 PM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Verilənlər Bazası: `agilli`
+-- Database: `agilli`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -37,7 +37,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name_az`, `name_en`, `order_no`, `created_at`, `updated_at`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `categories` (`id`, `name_az`, `name_en`, `order_no`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `contacts`
+-- Table structure for table `contacts`
 --
 
 CREATE TABLE `contacts` (
@@ -60,7 +60,7 @@ CREATE TABLE `contacts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `contacts`
+-- Dumping data for table `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `email`, `created_at`, `updated_at`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `contacts` (`id`, `email`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -86,7 +86,100 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `migrations`
+-- Table structure for table `metas`
+--
+
+CREATE TABLE `metas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `metas`
+--
+
+INSERT INTO `metas` (`id`, `label`, `key`, `value`, `created_at`, `updated_at`) VALUES
+(1, 'Ana Səhifə', 'main_page_name_title_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(2, 'Ana Səhifə', 'main_page_name_title_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(3, 'Ana Səhifə', 'main_page_name_description_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(4, 'Ana Səhifə', 'main_page_name_description_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(5, 'Ana Səhifə', 'main_page_property_og_site_name_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(6, 'Ana Səhifə', 'main_page_property_og_site_name_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(7, 'Ana Səhifə', 'main_page_property_og_url_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(8, 'Ana Səhifə', 'main_page_property_og_url_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(9, 'Ana Səhifə', 'main_page_property_og_title_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(10, 'Ana Səhifə', 'main_page_property_og_title_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(11, 'Ana Səhifə', 'main_page_property_og_description_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(12, 'Ana Səhifə', 'main_page_property_og_description_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(13, 'Ana Səhifə', 'main_page_property_twitter_url_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(14, 'Ana Səhifə', 'main_page_property_twitter_url_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(15, 'Ana Səhifə', 'main_page_property_twitter_title_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(16, 'Ana Səhifə', 'main_page_property_twitter_title_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(17, 'Ana Səhifə', 'main_page_property_twitter_description_az', 'home az', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(18, 'Ana Səhifə', 'main_page_property_twitter_description_en', 'home en', '2022-07-20 15:35:53', '2022-07-20 15:35:53'),
+(19, 'Haqqımızda', 'about_page_name_title_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(20, 'Haqqımızda', 'about_page_name_title_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(21, 'Haqqımızda', 'about_page_name_description_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(22, 'Haqqımızda', 'about_page_name_description_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(23, 'Haqqımızda', 'about_page_property_og_site_name_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(24, 'Haqqımızda', 'about_page_property_og_site_name_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(25, 'Haqqımızda', 'about_page_property_og_url_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(26, 'Haqqımızda', 'about_page_property_og_url_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(27, 'Haqqımızda', 'about_page_property_og_title_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(28, 'Haqqımızda', 'about_page_property_og_title_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(29, 'Haqqımızda', 'about_page_property_og_description_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(30, 'Haqqımızda', 'about_page_property_og_description_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(31, 'Haqqımızda', 'about_page_property_twitter_url_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(32, 'Haqqımızda', 'about_page_property_twitter_url_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(33, 'Haqqımızda', 'about_page_property_twitter_title_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(34, 'Haqqımızda', 'about_page_property_twitter_title_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(35, 'Haqqımızda', 'about_page_property_twitter_description_az', 'h - az', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(36, 'Haqqımızda', 'about_page_property_twitter_description_en', 'h - en', '2022-07-20 15:50:12', '2022-07-20 15:50:12'),
+(37, 'Proyektlər', 'works_page_name_title_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(38, 'Proyektlər', 'works_page_name_title_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(39, 'Proyektlər', 'works_page_name_description_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(40, 'Proyektlər', 'works_page_name_description_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(41, 'Proyektlər', 'works_page_property_og_site_name_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(42, 'Proyektlər', 'works_page_property_og_site_name_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(43, 'Proyektlər', 'works_page_property_og_url_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(44, 'Proyektlər', 'works_page_property_og_url_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(45, 'Proyektlər', 'works_page_property_og_title_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(46, 'Proyektlər', 'works_page_property_og_title_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(47, 'Proyektlər', 'works_page_property_og_description_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(48, 'Proyektlər', 'works_page_property_og_description_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(49, 'Proyektlər', 'works_page_property_twitter_url_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(50, 'Proyektlər', 'works_page_property_twitter_url_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(51, 'Proyektlər', 'works_page_property_twitter_title_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(52, 'Proyektlər', 'works_page_property_twitter_title_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(53, 'Proyektlər', 'works_page_property_twitter_description_az', 'w - az', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(54, 'Proyektlər', 'works_page_property_twitter_description_en', 'w - en', '2022-07-20 15:51:08', '2022-07-20 15:51:08'),
+(55, 'Xəbərlər', 'news_page_name_title_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(56, 'Xəbərlər', 'news_page_name_title_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(57, 'Xəbərlər', 'news_page_name_description_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(58, 'Xəbərlər', 'news_page_name_description_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(59, 'Xəbərlər', 'news_page_property_og_site_name_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(60, 'Xəbərlər', 'news_page_property_og_site_name_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(61, 'Xəbərlər', 'news_page_property_og_url_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(62, 'Xəbərlər', 'news_page_property_og_url_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(63, 'Xəbərlər', 'news_page_property_og_title_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(64, 'Xəbərlər', 'news_page_property_og_title_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(65, 'Xəbərlər', 'news_page_property_og_description_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(66, 'Xəbərlər', 'news_page_property_og_description_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(67, 'Xəbərlər', 'news_page_property_twitter_url_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(68, 'Xəbərlər', 'news_page_property_twitter_url_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(69, 'Xəbərlər', 'news_page_property_twitter_title_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(70, 'Xəbərlər', 'news_page_property_twitter_title_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(71, 'Xəbərlər', 'news_page_property_twitter_description_az', 'n -az', '2022-07-20 15:52:09', '2022-07-20 15:52:09'),
+(72, 'Xəbərlər', 'news_page_property_twitter_description_en', 'n -en', '2022-07-20 15:52:09', '2022-07-20 15:52:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -96,7 +189,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -110,12 +203,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (45, '2022_07_15_081616_create_projects_table', 1),
 (46, '2022_07_15_081712_create_project_images_table', 1),
 (47, '2022_07_17_065906_create_news_table', 1),
-(48, '2022_07_19_052724_create_contacts_table', 2);
+(48, '2022_07_19_052724_create_contacts_table', 2),
+(49, '2022_03_16_063717_create_metas_table', 3);
 
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -144,7 +238,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `cover`, `cover_alt_az`, `cover_alt_en`, `title_az`, `title_en`, `author_az`, `author_en`, `release_date_az`, `release_date_en`, `text_1_az`, `text_1_en`, `image_1`, `image_1_alt_az`, `image_1_alt_en`, `text_2_az`, `text_2_en`, `image_2`, `image_2_alt_az`, `image_2_alt_en`, `created_at`, `updated_at`) VALUES
@@ -164,7 +258,7 @@ INSERT INTO `news` (`id`, `cover`, `cover_alt_az`, `cover_alt_en`, `title_az`, `
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `options`
+-- Table structure for table `options`
 --
 
 CREATE TABLE `options` (
@@ -176,7 +270,7 @@ CREATE TABLE `options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `options`
+-- Dumping data for table `options`
 --
 
 INSERT INTO `options` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
@@ -236,7 +330,7 @@ INSERT INTO `options` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `partnyor_images`
+-- Table structure for table `partnyor_images`
 --
 
 CREATE TABLE `partnyor_images` (
@@ -251,7 +345,7 @@ CREATE TABLE `partnyor_images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `partnyor_images`
+-- Dumping data for table `partnyor_images`
 --
 
 INSERT INTO `partnyor_images` (`id`, `src`, `alt_az`, `alt_en`, `type`, `order_no`, `created_at`, `updated_at`) VALUES
@@ -272,7 +366,7 @@ INSERT INTO `partnyor_images` (`id`, `src`, `alt_az`, `alt_en`, `type`, `order_n
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -284,7 +378,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -302,7 +396,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `projects`
+-- Table structure for table `projects`
 --
 
 CREATE TABLE `projects` (
@@ -332,7 +426,7 @@ CREATE TABLE `projects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `projects`
+-- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`id`, `cover`, `alt_az`, `alt_en`, `category_id`, `title_1_az`, `title_1_en`, `title_2_az`, `title_2_en`, `text_az`, `text_en`, `release_date_az`, `release_date_en`, `client_az`, `client_en`, `art_director_az`, `art_director_en`, `designer_az`, `designer_en`, `copyrighter_az`, `copyrighter_en`, `created_at`, `updated_at`) VALUES
@@ -347,7 +441,7 @@ INSERT INTO `projects` (`id`, `cover`, `alt_az`, `alt_en`, `category_id`, `title
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `project_images`
+-- Table structure for table `project_images`
 --
 
 CREATE TABLE `project_images` (
@@ -363,7 +457,7 @@ CREATE TABLE `project_images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `project_images`
+-- Dumping data for table `project_images`
 --
 
 INSERT INTO `project_images` (`id`, `project_id`, `src`, `alt_az`, `alt_en`, `col_12`, `order_no`, `created_at`, `updated_at`) VALUES
@@ -375,7 +469,7 @@ INSERT INTO `project_images` (`id`, `project_id`, `src`, `alt_az`, `alt_en`, `co
 -- --------------------------------------------------------
 
 --
--- Cədvəl üçün cədvəl strukturu `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -391,7 +485,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Sxemi çıxarılan cedvel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `avatar`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -402,56 +496,62 @@ INSERT INTO `users` (`id`, `name`, `avatar`, `email`, `email_verified_at`, `pass
 --
 
 --
--- Cədvəl üçün indekslər `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `contacts`
+-- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Cədvəl üçün indekslər `migrations`
+-- Indexes for table `metas`
+--
+ALTER TABLE `metas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `options`
+-- Indexes for table `options`
 --
 ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `partnyor_images`
+-- Indexes for table `partnyor_images`
 --
 ALTER TABLE `partnyor_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Cədvəl üçün indekslər `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -459,19 +559,19 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Cədvəl üçün indekslər `projects`
+-- Indexes for table `projects`
 --
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `project_images`
+-- Indexes for table `project_images`
 --
 ALTER TABLE `project_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Cədvəl üçün indekslər `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -482,67 +582,73 @@ ALTER TABLE `users`
 --
 
 --
--- Cədvəl üçün AUTO_INCREMENT `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `contacts`
+-- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `migrations`
+-- AUTO_INCREMENT for table `metas`
+--
+ALTER TABLE `metas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
+--
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `options`
+-- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `partnyor_images`
+-- AUTO_INCREMENT for table `partnyor_images`
 --
 ALTER TABLE `partnyor_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `projects`
+-- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `project_images`
+-- AUTO_INCREMENT for table `project_images`
 --
 ALTER TABLE `project_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Cədvəl üçün AUTO_INCREMENT `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

@@ -150,6 +150,7 @@
                         'project-banner',
                         'news-banner',
                         'news',
+                        'meta',
                         'category'
                     ]))
                         show
@@ -163,6 +164,7 @@
                         'project-banner',
                         'news-banner',
                         'news',
+                        'meta',
                         'category'
                     ]))
                         true
@@ -205,6 +207,7 @@
                             'news-banner',
                             'category',
                             'news',
+                            'meta',
                             'project',
                         ]))
                             show
@@ -359,6 +362,16 @@
                             @endif
                             " href="{{ route('about.banner') }}">
                             About
+                        </a>
+
+                        <a class="dropdown-item
+                            @if(in_array(request()->segment(2),[
+                                                    'meta',
+                                                ]))
+                            active show
+                            @endif
+                            " href="{{ route('meta.index') }}">
+                            Meta
                         </a>
                     </div>
                 </li>

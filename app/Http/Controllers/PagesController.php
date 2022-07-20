@@ -16,6 +16,7 @@ class PagesController extends Controller
     public function home()
     {
         return view('front.pages.home', [
+            'key'=>'main_page_',
             'partners' => PartnyorImage::where('type', 1)->latest()->get(),
             'teams' => PartnyorImage::where('type', 2)->latest()->get(),
             'last_projects'=>Project::orderBy('id','desc')->take(2)->get(),
@@ -27,6 +28,7 @@ class PagesController extends Controller
     public function about()
     {
         return view('front.pages.about',[
+            'key'=>'about_page_',
             'partners' => PartnyorImage::where('type', 1)->latest()->get(),
             'teams' => PartnyorImage::where('type', 2)->latest()->get(),
             'last_news'=>News::orderBy('id','desc')->take(2)->get(),
@@ -37,6 +39,7 @@ class PagesController extends Controller
     public function works()
     {
         return view('front.pages.works', [
+            'key'=>'works_page_',
             'categories' => Category::latest()->get()
         ]);
     }
@@ -69,16 +72,19 @@ class PagesController extends Controller
 
     public function worksSingle($id,$slug = null)
     {
+        $key        = 'works_page_';
         $project    = Project::with('images')->findOrFail($id);
 
         $previous   = Project::where('id', '<', $id)->orderBy('id','desc')->first();
         $next       = Project::where('id', '>', $id)->orderBy('id','asc')->first();
-        return view('front.pages.project-single', compact('project', 'next','previous'));
+        return view('front.pages.project-single', compact('project', 'next','previous','key'));
     }
 
     public function news()
     {
-        return view('front.pages.news');
+        return view('front.pages.news',[
+            'key'=>'news_page_',
+        ]);
     }
 
     public function newsPost(Request $request)
@@ -103,15 +109,18 @@ class PagesController extends Controller
 
     public function newsSingle($id, $slug = null)
     {
-        $news = News::findOrFail($id);
+        $news       = News::findOrFail($id);
+        $key        = 'news_page_';
 
-        $previous = News::where('id', '<', $id)->orderBy('id','desc')->first();
-        return view('front.pages.news-single', compact('news', 'previous'));
+        $previous   = News::where('id', '<', $id)->orderBy('id','desc')->first();
+        return view('front.pages.news-single', compact('news', 'previous','key'));
     }
 
     public function contact()
     {
-        return view('front.pages.contact');
+        return view('front.pages.contact',[
+            'key'=>'contact_page_',
+        ]);
     }
 
     public function contactPost(Request $request)

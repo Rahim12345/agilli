@@ -18,9 +18,8 @@
                         self::$options[ $option->key ] = $option->value;
                     }
                 }
-
+//                dd($options);
                 return array_key_exists( $key, self::$options ) ? self::$options[ $key ] : $default;
             }
         }
     }
-    

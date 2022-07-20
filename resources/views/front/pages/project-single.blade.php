@@ -4,7 +4,17 @@
     - {{ __('menu.works') }}
 @endsection
 
-@section('css')
+@section('meta')
+    <meta name="title" content="{{ \App\Helpers\Metador::getMeta($key.'name_title_'.app()->getLocale()) }}">
+    <meta name="description" content="{{ \App\Helpers\Metador::getMeta($key.'name_description_'.app()->getLocale()) }}">
+    <meta property="og:site_name" content="{{ \App\Helpers\Metador::getMeta($key.'property_og_site_name_'.app()->getLocale()) }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ \App\Helpers\Metador::getMeta($key.'property_og_url_'.app()->getLocale()) }}">
+    <meta property="og:title" content="{{ \App\Helpers\Metador::getMeta($key.'property_og_title_'.app()->getLocale()) }}">
+    <meta property="og:description" content="{{ \App\Helpers\Metador::getMeta($key.'property_twitter_description_'.app()->getLocale()) }}">
+    <meta property="twitter:url" content="{{ \App\Helpers\Metador::getMeta($key.'property_og_url_'.app()->getLocale()) }}">
+    <meta property="twitter:title" content="{{ \App\Helpers\Metador::getMeta($key.'property_og_title_'.app()->getLocale()) }}">
+    <meta property="twitter:description" content="{{ \App\Helpers\Metador::getMeta($key.'property_og_description_'.app()->getLocale()) }}">
 @endsection
 
 @section('content')

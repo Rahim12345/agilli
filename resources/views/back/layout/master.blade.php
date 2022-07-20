@@ -36,6 +36,14 @@
         .select2-container--default .select2-selection--single .select2-selection__rendered {
             color: #FFFFFF !important;
         }
+
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_processing,
+        .dataTables_wrapper .dataTables_paginate{
+            color: white !important;
+        }
         @else
             @media (max-width: 767.98px)
             {

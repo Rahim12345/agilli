@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MetaController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PagesController;
@@ -121,4 +122,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
     Route::post('news-banner',[OptionController::class,'newsBannerPost'])
         ->name('news.banner.post');
     Route::resource('news', NewsController::class);
+
+    Route::resource('meta', MetaController::class);
+
+    Route::post('meta-data',[MetaController::class,'metaData'])
+        ->name('meta.data');
 });
