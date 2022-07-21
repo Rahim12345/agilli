@@ -46,10 +46,18 @@
             <nav>
                 <div class="header-left"  onclick="openpage('{!! route('front.home') !!}')">
                     <div class="logo">
-                        <a href="#0"><img src="{{ asset('a-n') }}/img/header/logo.png" alt=""></a>
+                        @if(Route::currentRouteName() == 'front.news.single' || Route::currentRouteName() == 'front.works.single')
+
+                        @else
+                            <a href="#0"><img src="{{ asset('a-n') }}/img/header/logo.png" alt=""></a>
+                        @endif
                     </div>
                     <div class="header-left-text">
-                        <span>{!! __('menu.top_text') !!}</span>
+                        @if(Route::currentRouteName() == 'front.news.single' || Route::currentRouteName() == 'front.works.single')
+
+                        @else
+                            <span>{!! __('menu.top_text') !!}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="header-right">
@@ -57,6 +65,9 @@
                         <div id="nav-mobile-bar-top" class="nav-mobile-bar"></div>
                         <div id="nav-mobile-bar-middle" class="nav-mobile-bar"></div>
                     </button>
+                    @if(Route::currentRouteName() == 'front.news.single' || Route::currentRouteName() == 'front.works.single')
+                        <button type="button" class="btn apply" onclick="openpage('{!! route('front.contact') !!}')">MÜRACİƏT ET</button>
+                    @endif
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-fullscreen">
